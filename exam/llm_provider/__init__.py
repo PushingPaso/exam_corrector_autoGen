@@ -10,13 +10,13 @@ load_dotenv()
 
 
 
-def get_llm(model_name: str = None) -> dict:
+def get_llm(model_name: str = None):
 
     if model_name is None:
-        model_name = "gemini-2.0-flash"
+        model_name = "gemini-2.5-flash"
     # Prende l'API key dalla variabile d'ambiente
     model_client = OpenAIChatCompletionClient(
-        model="gemini-2.0-flash",
+        model=model_name,
         api_key=os.getenv("GEMINI_API_KEY"),
     )
     return model_client

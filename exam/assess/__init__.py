@@ -108,7 +108,7 @@ class Assessor:
 
         self.evaluations_dir.mkdir(parents=True, exist_ok=True)
 
-    def assess_single_answer(
+    async def assess_single_answer(
             self,
             question,
             checklist,
@@ -159,7 +159,7 @@ class Assessor:
                 )
 
                 # With this:
-                llm = get_llm("llama-3.1-8b-instant")
+                llm = get_llm()
 
                 # Modify your prompt to explicitly request JSON format
                 json_prompt = f"""{prompt}
@@ -172,7 +172,7 @@ class Assessor:
 
                 Do not include any additional fields or text outside the JSON object."""
 
-                result_text = llm.call(json_prompt)
+                result_text = await llm.create(json_prompt)
 
                 # Parse the JSON response
                 import json
@@ -211,7 +211,7 @@ class Assessor:
                 "max_score": max_score
             }
 
-    def assess_student_exam(
+    async def assess_student_exam(
             self,
             student_email: str,
             exam_questions: list,
@@ -284,7 +284,7 @@ class Assessor:
                 response_text = student_responses[question_num]
 
                 # Valuta la singola risposta
-                assessment = self.assess_single_answer(
+                assessment = await self.assess_single_answer(
                     question=question,
                     checklist=checklist,
                     student_response=response_text,

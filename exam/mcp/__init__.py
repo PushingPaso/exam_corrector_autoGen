@@ -83,7 +83,7 @@ class ExamMCPServer:
     """Create all available tools."""
 
     @staticmethod
-    def load_checklist(question_ids: list[str]) -> str:
+    async def load_checklist(question_ids: list[str]) -> str:
         """
         Load assessment checklists for a *list* of question IDs into memory.
         This tool processes a batch of IDs at once.
@@ -152,7 +152,7 @@ class ExamMCPServer:
         }, indent=2)
 
     @staticmethod
-    def load_exam_from_yaml_tool(questions_file: str, responses_file: str, grades_file: str = None) -> str:
+    async def load_exam_from_yaml_tool(questions_file: str, responses_file: str, grades_file: str = None) -> str:
         """
         Load an entire exam from YAML files in static/se-exams directory.
 
@@ -212,7 +212,7 @@ class ExamMCPServer:
             return json.dumps({"error": str(e), "traceback": traceback.format_exc()})
 
     @staticmethod
-    def assess_student_exam(student_email: str) -> str:
+    async def assess_student_exam(student_email: str) -> str:
         """
         Assess all responses for a single student from loaded exam.
         Results are automatically saved to evaluations/{email}/assessment.json
