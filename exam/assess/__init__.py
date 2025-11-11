@@ -5,6 +5,7 @@ import json
 from dataclasses import dataclass
 from enum import Enum
 from pathlib import Path
+from autogen_core.models import UserMessage
 
 from pydantic import BaseModel, Field
 
@@ -158,10 +159,8 @@ class Assessor:
                     answer=student_response
                 )
 
-                # With this:
                 llm = get_llm()
 
-                # Modify your prompt to explicitly request JSON format
                 json_prompt = f"""{prompt}
 
                 You must respond with ONLY a valid JSON object matching this schema:
@@ -172,11 +171,30 @@ class Assessor:
 
                 Do not include any additional fields or text outside the JSON object."""
 
-                result_text = await llm.create(json_prompt)
+                # Usa l'API corretta di AutoGen
+                response = await llm.create(
+                    messages=[UserMessage(content=json_prompt, source="user")]
+                )
 
-                # Parse the JSON response
+                # Estrai il contenuto dalla risposta
+                if hasattr(response, 'content'):
+                    json_str = response.content
+                elif isinstance(response, str):
+                    json_str = response
+                else:
+                    # AutoGen restituisce un oggetto CreateResult
+                    json_str = response.content
+
+                # Pulisci eventuali markdown
+                json_str = json_str.strip()
+                if json_str.startswith('```json'):
+                    json_str = json_str.replace('```json', '').replace('```', '').strip()
+                if json_str.startswith('```'):
+                    json_str = json_str.replace('```', '').strip()
+
+                # Parse JSON
                 import json
-                result_dict = json.loads(result_text)
+                result_dict = json.loads(json_str)
                 result = FeatureAssessment(**result_dict)
 
                 feature_assessments_list.append({

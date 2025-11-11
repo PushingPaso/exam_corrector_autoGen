@@ -276,7 +276,7 @@ class ExamMCPServer:
             # ACCEDE ALLO STATO DELLA CLASSE
             assessor = Assessor(evaluations_dir=ExamMCPServer.evaluations_dir)
 
-            result = assessor.assess_student_exam(
+            result = await assessor.assess_student_exam(
                 student_email=student_email_full,
                 exam_questions=questions,
                 student_responses=student_data["responses"],

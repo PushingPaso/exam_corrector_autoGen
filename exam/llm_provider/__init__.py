@@ -4,20 +4,22 @@ import os
 from autogen_core.models import UserMessage
 from autogen_ext.models.openai import OpenAIChatCompletionClient
 from dotenv import load_dotenv
+from autogen_core.models import ModelInfo
+
 
 load_dotenv()
 
 
 
 
-def get_llm(model_name: str = None):
+def get_llm(model_name: str = None, output_format = None):
 
     if model_name is None:
         model_name = "gemini-2.5-flash"
     # Prende l'API key dalla variabile d'ambiente
     model_client = OpenAIChatCompletionClient(
         model=model_name,
-        api_key=os.getenv("GEMINI_API_KEY"),
+        api_key=os.getenv("GEMINI_API_KEY")
     )
     return model_client
 
@@ -25,8 +27,8 @@ def get_llm(model_name: str = None):
 class AIOracle:
     """Base class for AI-powered operations using Groq."""
 
-    def __init__(self, model_name: str = None):
-        self.__llm = get_llm(model_name)
+    def __init__(self, model_name: str = None,output_format = None):
+        self.__llm = get_llm(model_name,output_format)
 
     @property
     def llm(self):
