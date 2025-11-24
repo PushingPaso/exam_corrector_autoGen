@@ -9,27 +9,18 @@ load_dotenv()
 
 
 def get_llm(model_name: str = None, output_format = None):
-
     if model_name is None:
-        #model_name = "llama-3.3-70b-versatile"
-        model_name = "gpt-5.1-2025-11-13"
+        model_name = "gpt-4o"
+        # base_url="https://api.groq.com/openai/v1",
 
-        # Configura il client per usare l'endpoint di Groq
-        # Groq è compatibile con l'SDK OpenAI, basta cambiare base_url e api_key
+
     model_client = OpenAIChatCompletionClient(
         model=model_name,
-        #api_key=os.getenv("GROQ_API_KEY"),  # Assicurati di avere questa var d'ambiente
-        #base_url="https://api.groq.com/openai/v1",
-        api_type= "openai",
-        api_base= "https://api.openai.com/v1",
-    # Endpoint specifico per Groq
-
         model_info={
             "vision": False,
             "function_calling": True,
             "json_output": True,
-            "family": "groq"
-            "str"
+            "family": "openai"
         }
     )
     return model_client
@@ -47,7 +38,7 @@ class AIOracle:
 
     @property
     def model_name(self):
-        return "gpt-5.1-2025-11-13"
+        return "gpt-4o"
 
     @property
     def model_provider(self):
