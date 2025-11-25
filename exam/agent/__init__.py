@@ -12,11 +12,11 @@ def get_agents():
     UploaderAgent = AssistantAgent(
         name="uploader",
         model_client=model,
-        tools=[mcp.load_checklist, mcp.load_exam_from_yaml_tool],
+        tools=[mcp.load_exam_from_yaml_tool,mcp.load_checklist],
         system_message="""You are the Exam Data Manager.
 
         YOUR WORKFLOW (Follow strictly):
-        1. Call `load_exam_from_yaml_tool` with the provided date.
+        1. Call `load_exam_from_yaml_tool` with the provided date you will find the data at static/se-exams/se->{exam_date}-questions,static/se-exams/se->{exam_date}-responses, static/se-exams/se->{exam_date}-grades.
         2. The output will contain 'question_ids'. You MUST immediately call `load_checklist` with these IDs.
         3. ONLY AFTER both tools have run successfully, output a message: "DATA READY. Students to assess: [list of emails]".
 
@@ -29,14 +29,14 @@ def get_agents():
     AssessorAgent = AssistantAgent(
         name="assessor",
         model_client=model,
-        tools=[mcp.assess_student_exam],
+        tools=[mcp.list_students,mcp.assess_students_batch],
         system_message="""You are the Exam Grader.
 
         CONDITION: Do NOT act until the uploader has said "DATA READY" and loaded the checklists.
 
         YOUR WORKFLOW:
-        1. Look for the list of student emails in the chat history provided by the uploader.
-        2. Call `assess_student_exam` for EACH student email found.
+        1. Look for the list of student emails given by the tool .
+        2. Call `assess_students_batch` with the provided emails.
         3. Once all assessments are done, output "TERMINATE".
         """
     )
