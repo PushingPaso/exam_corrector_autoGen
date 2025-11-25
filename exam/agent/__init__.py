@@ -8,36 +8,34 @@ def get_agents():
     model = get_llm()
 
     # ISTRUZIONI RIGIDE PER L'UPLOADER
-    # Deve fare due cose PRIMA di dare l'ok all'assessor.
     UploaderAgent = AssistantAgent(
         name="uploader",
         model_client=model,
-        tools=[mcp.load_exam_from_yaml_tool,mcp.load_checklist],
+        tools=[mcp.load_exam_from_yaml_tool, mcp.load_checklist],
         system_message="""You are the Exam Data Manager.
 
         YOUR WORKFLOW (Follow strictly):
-        1. Call `load_exam_from_yaml_tool` with the provided date you will find the data at static/se-exams/se->{exam_date}-questions,static/se-exams/se->{exam_date}-responses, static/se-exams/se->{exam_date}-grades.
-        2. The output will contain 'question_ids'. You MUST immediately call `load_checklist` with these IDs.
-        3. ONLY AFTER both tools have run successfully, output a message: "DATA READY. Students to assess: [list of emails]".
-
-        DO NOT STOP after the first tool. You must run both.
+        1. Call `load_exam_from_yaml_tool`. 
+           IMPORTANT: Provide ONLY the filenames (e.g., "se-2025-06-05-questions.yml"), DO NOT include paths like "static/".
+           Expected filenames pattern: se-{DATE}-questions.yml, se-{DATE}-responses.yml, se-{DATE}-grades.yml.
+        2. The output will contain 'question_ids'. Call `load_checklist` with these IDs.
+        3. ONLY AFTER both tools success, output: "DATA READY".
         """
     )
 
     # ISTRUZIONI RIGIDE PER L'ASSESSOR
-    # Deve aspettare il segnale "DATA READY".
     AssessorAgent = AssistantAgent(
         name="assessor",
         model_client=model,
-        tools=[mcp.list_students,mcp.assess_students_batch],
+        tools=[mcp.list_students, mcp.assess_students_batch],
         system_message="""You are the Exam Grader.
 
-        CONDITION: Do NOT act until the uploader has said "DATA READY" and loaded the checklists.
+        CONDITION: Do NOT act until the uploader says "DATA READY".
 
         YOUR WORKFLOW:
-        1. Look for the list of student emails given by the tool .
-        2. Call `assess_students_batch` with the provided emails.
-        3. Once all assessments are done, output "TERMINATE".
+        1. Call `list_students` to get the emails.
+        2. Call `assess_students_batch` passing ALL emails at once.
+        3. Output "TERMINATE" when done.
         """
     )
 
