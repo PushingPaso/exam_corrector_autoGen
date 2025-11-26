@@ -1,8 +1,3 @@
-"""
-MCP Server con Context Condiviso per collaborazione tra tool.
-REFACTORIZZATO: Logica di business spostata nei moduli appropriati.
-"""
-
 import json
 from dataclasses import dataclass, field
 from typing import Dict
@@ -17,7 +12,6 @@ from exam.solution import Answer, load_cache as load_answer_cache
 @dataclass
 class AssessmentContext:
     """Shared context between tool calls."""
-    # Cache of loaded data
     loaded_answers: Dict[str, str] = field(default_factory=dict)
     loaded_checklists: Dict[str, Answer] = field(default_factory=dict)
     loaded_exams = {}

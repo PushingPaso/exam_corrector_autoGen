@@ -1,7 +1,6 @@
 import asyncio
-import os
-from autogen_agentchat.teams import SelectorGroupChat  # <--- CAMBIO IMPORTANTE
 from autogen_agentchat.conditions import TextMentionTermination
+from autogen_agentchat.teams import SelectorGroupChat  # <--- CAMBIO IMPORTANTE
 
 from exam.agent import get_agents
 from exam.llm_provider import get_llm
@@ -16,11 +15,8 @@ async def main():
         model_client=get_llm(),  # supervisor
         termination_condition=TextMentionTermination("TERMINATE")
     )
-
-    # Prompt iniziale chiaro
     task = f"Start the exam assessment for date {exam_date}. First load exam AND checklists. Then assess the students."
 
-    # Esegui in streaming per vedere i passaggi
     async for message in team.run_stream(task=task):
         if hasattr(message, 'source') and hasattr(message, 'content'):
             print(f"\n[{message.source}]: {message.content}")

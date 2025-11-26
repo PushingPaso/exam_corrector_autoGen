@@ -6,8 +6,6 @@ from exam.mcp import ExamMCPServer
 def get_agents():
     mcp = ExamMCPServer()
     model = get_llm()
-
-    # ISTRUZIONI RIGIDE PER L'UPLOADER
     UploaderAgent = AssistantAgent(
         name="uploader",
         model_client=model,
@@ -22,8 +20,6 @@ def get_agents():
         3. ONLY AFTER both tools success, output: "DATA READY".
         """
     )
-
-    # ISTRUZIONI RIGIDE PER L'ASSESSOR
     AssessorAgent = AssistantAgent(
         name="assessor",
         model_client=model,

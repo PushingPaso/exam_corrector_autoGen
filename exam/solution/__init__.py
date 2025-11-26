@@ -14,20 +14,20 @@ DIR_SOLUTIONS.mkdir(exist_ok=True)
 
 class Answer(BaseModel):
     core: list[str] = Field(
-        description="Elementi essenziali che devono essere presenti nella risposta perfetta per rispondere alla parte più importante della domanda. Ogni item è una stringa Markdown.",
+        description="Essential elements that must be present in the perfect answer to address the most important part of the question. Each item is a Markdown string.",
     )
     details_important: list[str] = Field(
-        description="Dettagli importanti che dovrebbero essere menzionati per arricchire la risposta. Ogni item è una stringa Markdown.",
+        description="Important details that should be mentioned to enrich the answer. Each item is a Markdown string.",
     )
 
     async def pretty(self, indent=0, prefix="\t") -> str:
-        result = "Core (elementi essenziali):\n"
+        result = "Core (essential elements):\n"
         if self.core:
             result += "\n".join(f"- {item}" for item in self.core) + "\n"
         else:
             result += "- <none>\n"
 
-        result += "Details - Importanti:\n"
+        result += "Details - Important:\n"
         if self.details_important:
             result += "\n".join(f"- {item}" for item in self.details_important) + "\n"
         else:
@@ -44,12 +44,10 @@ TEMPLATE = FILE_TEMPLATE.read_text(encoding="utf-8")
 
 def get_prompt(question: str, *helps: str) -> str:
     """
-    Crea il prompt usando la formattazione standard di Python.
+    Creates the prompt using standard Python formatting.
     """
-    # Combina gli "helps" come faceva prima LangChain
     help_string = "\n\n".join(helps) if helps else ""
 
-    # Usa il metodo .format() standard di Python
     return TEMPLATE.format(
         class_name=Answer.__name__,
         question=question,
@@ -69,7 +67,7 @@ def save_cache(
         model_provider: str = None):
     cache_file_path = cache_file(question)
     with open(cache_file_path, "w", encoding="utf-8") as f:
-        print(f"# saving answer to {cache_file_path}")
+        print(f"Saving answer to {cache_file_path}")
         yaml = answer.model_dump()
         yaml["question"] = question.text
         yaml["helps"] = helps
@@ -88,7 +86,7 @@ def load_cache(question: Question) -> Answer | None:
     if not cache_file_path.exists():
         return None
     with open(cache_file_path, "r", encoding="utf-8") as f:
-        print(f"# loading cached answer from {cache_file_path}")
+        print(f"Loading cached answer from {cache_file_path}")
         try:
             cached_answer = safe_load(f)
             return Answer(
@@ -96,7 +94,7 @@ def load_cache(question: Question) -> Answer | None:
                 details_important=cached_answer.get("details_important", []),
             )
         except Exception as e:
-            print(f"# error loading cached answer from {cache_file_path}: {e}")
+            print(f"Error loading cached answer from {cache_file_path}: {e}")
             cache_file_path.unlink()
             return None
 
@@ -113,7 +111,6 @@ class SolutionProvider(AIOracle):
         text = question.text
         helps = []
 
-        # Accesso ai dizionari corretto (visto che search restituisce dict, non oggetti)
         if self.__use_helps:
             helps = [doc['content'] for doc in self.__vector_store.search(text, k=max_helps)]
 
@@ -123,11 +120,9 @@ class SolutionProvider(AIOracle):
             messages=[UserMessage(content=prompt, source="user")]
         )
 
-        # Estrai il contenuto (che è nell'attributo .content del risultato)
         result_content = result_msg.content if hasattr(result_msg, 'content') else str(result_msg)
 
         try:
-            # Pulizia stringa (markdown backticks)
             result_clean = result_content.strip()
             if result_clean.startswith("```json"):
                 result_clean = result_clean[7:]
@@ -137,10 +132,8 @@ class SolutionProvider(AIOracle):
                 result_clean = result_clean[:-3]
             result_clean = result_clean.strip()
 
-            # Parse JSON e crea oggetto Answer
             data = json.loads(result_clean)
 
-            # Gestione caso in cui l'LLM restituisca una lista invece di un dict (raro ma possibile)
             if isinstance(data, list):
                 raise ValueError("LLM returned a list instead of a dictionary")
 
@@ -150,7 +143,6 @@ class SolutionProvider(AIOracle):
             return answer
 
         except (json.JSONDecodeError, ValueError) as e:
-            # Stampa l'errore e il contenuto grezzo per debug
             print(f"ERROR parsing response: {e}")
             print(f"RAW Response: {result_content}")
             raise ValueError(f"Failed to parse LLM response into {Answer.__name__}: {e}")
