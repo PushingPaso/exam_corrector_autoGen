@@ -2,7 +2,7 @@ import json
 
 from pydantic import BaseModel, Field
 from yaml import safe_dump, safe_load
-
+from autogen_core.models import UserMessage
 from exam import DIR_ROOT, Question
 from exam.llm_provider import AIOracle
 from exam.rag import sqlite_vector_store
@@ -20,7 +20,7 @@ class Answer(BaseModel):
         description="Dettagli importanti che dovrebbero essere menzionati per arricchire la risposta. Ogni item è una stringa Markdown.",
     )
 
-    def pretty(self, indent=0, prefix="\t") -> str:
+    async def pretty(self, indent=0, prefix="\t") -> str:
         result = "Core (elementi essenziali):\n"
         if self.core:
             result += "\n".join(f"- {item}" for item in self.core) + "\n"
@@ -107,42 +107,50 @@ class SolutionProvider(AIOracle):
         self.__vector_store = sqlite_vector_store()
         self.__use_helps = self.__vector_store.dims > 0
 
-    def answer(self, question: Question, max_helps=5) -> Answer:
+    async def answer(self, question: Question, max_helps=5) -> Answer:
         if cache := load_cache(question):
             return cache
         text = question.text
         helps = []
+
+        # Accesso ai dizionari corretto (visto che search restituisce dict, non oggetti)
         if self.__use_helps:
             helps = [doc['content'] for doc in self.__vector_store.search(text, k=max_helps)]
 
         prompt = get_prompt(text, *helps)
-        result = self.llm.call(prompt)
+
+        result_msg = await self.llm.create(
+            messages=[UserMessage(content=prompt, source="user")]
+        )
+
+        # Estrai il contenuto (che è nell'attributo .content del risultato)
+        result_content = result_msg.content if hasattr(result_msg, 'content') else str(result_msg)
 
         try:
+            # Pulizia stringa (markdown backticks)
+            result_clean = result_content.strip()
+            if result_clean.startswith("```json"):
+                result_clean = result_clean[7:]
+            if result_clean.startswith("```"):
+                result_clean = result_clean[3:]
+            if result_clean.endswith("```"):
+                result_clean = result_clean[:-3]
+            result_clean = result_clean.strip()
 
-            if isinstance(result, str):
-                # Rimuovi eventuali backticks markdown se presenti
-                result_clean = result.strip()
-                if result_clean.startswith("```json"):
-                    result_clean = result_clean[7:]
-                if result_clean.startswith("```"):
-                    result_clean = result_clean[3:]
-                if result_clean.endswith("```"):
-                    result_clean = result_clean[:-3]
-                result_clean = result_clean.strip()
+            # Parse JSON e crea oggetto Answer
+            data = json.loads(result_clean)
 
-                # Parse JSON e crea oggetto Answer
-                data = json.loads(result_clean)
-                answer = Answer(**data)
-            elif isinstance(result, dict):
-                answer = Answer(**result)
-            elif isinstance(result, Answer):
-                answer = result
-            else:
-                raise ValueError(f"Unexpected result type: {type(result)}")
+            # Gestione caso in cui l'LLM restituisca una lista invece di un dict (raro ma possibile)
+            if isinstance(data, list):
+                raise ValueError("LLM returned a list instead of a dictionary")
+
+            answer = Answer(**data)
 
             save_cache(question, answer, helps, self.model_name, self.model_provider)
             return answer
 
         except (json.JSONDecodeError, ValueError) as e:
-            raise ValueError(f"Failed to parse LLM response into {Answer.__name__}: {e}\nResponse: {result}")
+            # Stampa l'errore e il contenuto grezzo per debug
+            print(f"ERROR parsing response: {e}")
+            print(f"RAW Response: {result_content}")
+            raise ValueError(f"Failed to parse LLM response into {Answer.__name__}: {e}")

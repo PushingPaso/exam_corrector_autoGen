@@ -160,29 +160,34 @@ class NativeVectorStore:
 
     def search(self, query: str, k: int = 4):
         """
-        Esegue la ricerca semantica.
+        Esegue la ricerca semantica con sqlite-vec.
+        Usa la sintassi 'k = ?' richiesta da sqlite-vec per le query KNN.
         """
         query_vector = self._get_embedding(query)
-        if not query_vector: return []
+        if not query_vector:
+            return []
 
         vector_blob = sqlite_vec.serialize_float32(query_vector)
 
-        # Nota: usiamo f"... LIMIT {k}" invece di "LIMIT ?"
+        # Sintassi corretta per sqlite-vec: usa 'k = ?' nella WHERE
         sql = f"""
+            WITH matches AS (
+                SELECT rowid, distance
+                FROM {self.table_vec}
+                WHERE embedding MATCH ? AND k = ?
+            )
             SELECT 
                 meta.content, 
                 meta.source, 
                 meta.lines, 
                 meta.slide_index,
-                v.distance
-            FROM {self.table_vec} v
-            INNER JOIN {self.table_meta} meta ON v.rowid = meta.rowid
-            WHERE v.embedding MATCH ?
-            ORDER BY v.distance
-            LIMIT {k}
+                m.distance
+            FROM matches m
+            LEFT JOIN {self.table_meta} meta ON m.rowid = meta.rowid
+            ORDER BY m.distance
         """
 
-        cursor = self.conn.execute(sql, (vector_blob,))
+        cursor = self.conn.execute(sql, (vector_blob, k))
 
         results = []
         for row in cursor.fetchall():

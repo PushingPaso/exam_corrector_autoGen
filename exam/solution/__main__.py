@@ -1,21 +1,26 @@
+import asyncio
+
 from exam import *
 from exam.solution import SolutionProvider
 import sys
 
+async def main():
+    questions = get_questions_store()
+    llm = SolutionProvider()
 
-questions = get_questions_store()
-llm = SolutionProvider()
+    if len(sys.argv) > 1:
+        targets = [questions.question(id.strip()) for id in sys.argv[1:]]
+    else:
+        targets = questions.questions
 
-if len(sys.argv) > 1:
-    targets = [questions.question(id.strip()) for id in sys.argv[1:]]
-else:
-    targets = questions.questions
-
-for q in targets:
-    print(q.id)
-    print("\t", q.text)
-    a = llm.answer(q)
-    print(a.pretty(indent=1))
-    print("---")
+    for q in targets:
+        print(q.id)
+        print("\t", q.text)
+        a = await llm.answer(q)
+        print(a.pretty(indent=1))
+        print("---")
     
-print("Done.")
+        print("Done.")
+
+if __name__ == '__main__':
+    asyncio.run(main())
