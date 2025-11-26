@@ -1,3 +1,4 @@
+import getpass
 import os
 
 from autogen_core.models import ModelInfo
@@ -7,6 +8,13 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+KEY_OPENAI_API_KEY = "OPENAI_API_KEY"
+
+
+def ensure_openai_api_key():
+    if not os.environ.get(KEY_OPENAI_API_KEY):
+        os.environ[KEY_OPENAI_API_KEY] = getpass.getpass("Enter API key for OpenAI: ")
+    return os.environ[KEY_OPENAI_API_KEY]
 
 def get_llm(model_name: str = None, output_format = None):
     if model_name is None:

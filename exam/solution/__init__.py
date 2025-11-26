@@ -105,7 +105,7 @@ class SolutionProvider(AIOracle):
     def __init__(self, model_name: str = None):
         super().__init__(model_name)
         self.__vector_store = sqlite_vector_store()
-        self.__use_helps = self.__vector_store.get_dimensionality() > 0
+        self.__use_helps = self.__vector_store.dims > 0
 
     def answer(self, question: Question, max_helps=5) -> Answer:
         if cache := load_cache(question):
@@ -113,13 +113,13 @@ class SolutionProvider(AIOracle):
         text = question.text
         helps = []
         if self.__use_helps:
-            helps = [doc.page_content for doc in self.__vector_store.similarity_search(text, k=max_helps)]
+            helps = [doc['content'] for doc in self.__vector_store.search(text, k=max_helps)]
 
         prompt = get_prompt(text, *helps)
         result = self.llm.call(prompt)
 
         try:
-            # Se result è una stringa, fai il parsing JSON
+
             if isinstance(result, str):
                 # Rimuovi eventuali backticks markdown se presenti
                 result_clean = result.strip()
