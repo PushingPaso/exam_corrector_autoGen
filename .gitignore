@@ -5,7 +5,8 @@ __pycache__/
 
 # C extensions
 *.so
-
+mlruns/
+mlartifacts/
 #embeddings-DB
 slides-rag.db
 # Distribution / packaging

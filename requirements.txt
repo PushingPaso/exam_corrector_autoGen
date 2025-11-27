@@ -3,7 +3,7 @@ mcp>=1.0.0
 
 pyautogen
 autogen
-
+mlflow
 openai
 sqlite-vec
 
