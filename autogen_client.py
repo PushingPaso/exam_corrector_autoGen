@@ -21,6 +21,10 @@ async def main():
         if hasattr(message, 'source') and hasattr(message, 'content'):
             print(f"\n[{message.source}]: {message.content}")
 
+            # CHECK FOR USAGE IN MESSAGE METADATA (if supported by your version)
+            if hasattr(message, 'models_usage'):
+                print(f"Usage update: {message.models_usage}")
+
 
 if __name__ == '__main__':
     asyncio.run(main())

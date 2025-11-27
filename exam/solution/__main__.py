@@ -20,7 +20,7 @@ async def main():
         print(a.pretty(indent=1))
         print("---")
     
-        print("Done.")
+    print("Done.")
 
 if __name__ == '__main__':
     asyncio.run(main())
