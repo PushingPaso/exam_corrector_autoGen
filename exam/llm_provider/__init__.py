@@ -28,7 +28,8 @@ def get_llm(model_name: str = None, output_format = None):
             "vision": False,
             "function_calling": True,
             "json_output": True,
-            "family": "openai"
+            "family": "openai",
+            "structured_output": False
         }
     )
     return model_client

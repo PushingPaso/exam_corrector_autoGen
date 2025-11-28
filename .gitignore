@@ -7,6 +7,7 @@ __pycache__/
 *.so
 mlruns/
 mlartifacts/
+mlflow.db
 #embeddings-DB
 slides-rag.db
 # Distribution / packaging
