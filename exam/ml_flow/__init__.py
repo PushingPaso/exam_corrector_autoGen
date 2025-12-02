@@ -16,7 +16,7 @@ class SimpleTokenCounter:
             self.total += (p + c)
 
 
-def analyze_framework_overhead(experiment_name="AutoGen_Exam_Assessment", debug=True):
+def analyze_framework_overhead(experiment_name, debug=True):
     """
     Downloads the last trace from MLflow and calculates the time spent
     in pure conversation versus orchestration overhead.
@@ -63,30 +63,41 @@ def analyze_framework_overhead(experiment_name="AutoGen_Exam_Assessment", debug=
             llm_count += 1
             duration_sec = duration / 1e9
 
-            # Get inputs and outputs for better classification
+            # Get inputs for classification
             inputs = str(span.inputs).lower() if span.inputs else ""
-            outputs = str(span.outputs).lower() if span.outputs else ""
-            attributes = str(span.attributes).lower() if span.attributes else ""
 
-            # More comprehensive orchestration detection
-            orchestration_keywords = [
-                "select", "speaker", "next", "role", "agent",
-                "orchestrat", "coordinator", "manager", "system"
-            ]
+            # CRITICAL FIX: AutoGen's selector overhead is specifically about choosing next speaker
+            # Tool calls (load_exam, assess_students, etc.) are NOT overhead - they're actual work!
 
-            is_orchestration = any(keyword in name or
-                                   keyword in inputs or
-                                   keyword in outputs or
-                                   keyword in attributes
-                                   for keyword in orchestration_keywords)
+            # Orchestration = selecting which agent speaks next
+            is_selector_call = (
+                    "selectorgroupchat" in name or
+                    "selector" in name or
+                    ("select" in inputs and "speaker" in inputs) or
+                    ("next" in inputs and "agent" in inputs)
+            )
+
+            # Tool execution is PRODUCTIVE work, not overhead
+            is_tool_call = (
+                    "tool" in name or
+                    "load_exam" in inputs or
+                    "load_checklist" in inputs or
+                    "assess" in inputs or
+                    "list_students" in inputs
+            )
+
+            # Only selector calls are overhead, tool calls are conversation
+            is_orchestration = is_selector_call and not is_tool_call
 
             if debug:
                 print(f"LLM Call #{llm_count}:")
                 print(f"  Name: {span.name}")
-                print(f"  Duration: {duration_sec:.2f}s")
+                print(f"  Duration: {duration_sec:.2f}m")
+                print(f"  Is Selector: {is_selector_call}")
+                print(f"  Is Tool Call: {is_tool_call}")
                 print(f"  Classified as: {'ORCHESTRATION' if is_orchestration else 'CONVERSATION'}")
-                if is_orchestration:
-                    print(f"  Reason: Keywords found in name/inputs/outputs")
+                if len(inputs) > 0:
+                    print(f"  Input preview: {inputs[:150]}...")
                 print()
 
             if is_orchestration:
@@ -106,8 +117,8 @@ def analyze_framework_overhead(experiment_name="AutoGen_Exam_Assessment", debug=
 
     print("=" * 50)
     print(f"Total LLM Calls: {llm_count}")
-    print(f"Pure Conversation Time:  {conv_sec:.2f}s")
-    print(f"Orchestration Overhead:  {over_sec:.2f}s")
-    print(f"Total LLM Time:          {total_llm_sec:.2f}s")
+    print(f"Pure Conversation Time:  {conv_sec:.2f}m")
+    print(f"Orchestration Overhead:  {over_sec:.2f}m")
+    print(f"Total LLM Time:          {total_llm_sec:.2f}m")
     print(f"Framework Overhead Ratio: {overhead_ratio:.1f}%")
     print("-" * 50)

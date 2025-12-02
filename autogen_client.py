@@ -61,7 +61,7 @@ async def main():
         mlflow.log_metric("duration_seconds", duration)
 
     time.sleep(3)
-    analyze_framework_overhead()
+    analyze_framework_overhead("AutoGen_Exam_Assessment")
 
 
 if __name__ == '__main__':
