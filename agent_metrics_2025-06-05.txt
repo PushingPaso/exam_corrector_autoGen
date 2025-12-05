@@ -1,0 +1,44 @@
+================================================================================
+AGENT COMMUNICATION ANALYSIS REPORT
+================================================================================
+
+SUMMARY
+--------------------------------------------------------------------------------
+Total Messages: 22
+Total Agents: 3
+Conversation Velocity: 0.18 msg/sec
+Duration: 123.51 seconds
+
+AGENT DETAILS
+--------------------------------------------------------------------------------
+
+assessor:
+  Messages: 13
+  Tokens: 224
+  Avg Response Time: 10.02s
+  Tokens/Message: 17.2
+  Tool Usage Rate: 0.00%
+
+uploader:
+  Messages: 8
+  Tokens: 126
+  Avg Response Time: 15.96s
+  Tokens/Message: 15.8
+  Tool Usage Rate: 0.00%
+
+user:
+  Messages: 1
+  Tokens: 0
+  Avg Response Time: 0.00s
+  Tokens/Message: 0.0
+  Tool Usage Rate: 0.00%
+
+COMMUNICATION PATTERNS
+--------------------------------------------------------------------------------
+  user -> assessor: 1 messages
+  assessor -> assessor: 8 messages
+  assessor -> uploader: 4 messages
+  uploader -> uploader: 4 messages
+  uploader -> assessor: 4 messages
+
+================================================================================

@@ -30,8 +30,7 @@ def get_agents():
 
         YOUR WORKFLOW:
         1. Call `list_students` to get the emails.
-        2. Call `assess_students_batch` passing ALL emails at once.
-        3. Output "TERMINATE" when done.
+        2. Call `assess_students_batch` passing ALL emails at once and Immediately say "TERMINATE" when assess_students_batch methods ends.
         """
     )
 
