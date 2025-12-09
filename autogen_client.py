@@ -11,8 +11,7 @@ from autogen_agentchat.teams import SelectorGroupChat
 
 from exam.agent import get_agents
 from exam.llm_provider import get_llm
-from exam.ml_flow import SimpleTokenCounter, analyze_framework_overhead
-from exam.ml_flow.agent_metrics import AgentMetricsTracker
+from exam.ml_flow import SimpleTokenCounter, calculate_overhead
 
 
 async def main():
@@ -26,13 +25,10 @@ async def main():
     # Initialize counters
     cost_counter = SimpleTokenCounter()
 
-    # Initialize agent metrics tracker
-    metrics_tracker = AgentMetricsTracker(experiment_name="AutoGen_Exam_Assessment")
-
     mlflow.set_tracking_uri("http://localhost:5000")
     mlflow.set_experiment("AutoGen_Exam_Assessment")
 
-    with mlflow.start_run():
+    with mlflow.start_run()as run:
         mlflow.log_param("framework", "AutoGen")
         mlflow.log_param("exam_date", exam_date)
         mlflow.log_param("metrics_tracking_enabled", True)
@@ -53,10 +49,7 @@ async def main():
         start_time = time.time()
 
         # Start metrics tracking
-        metrics_tracker.start_tracking()
-
         message_count = 0
-        previous_agent = None
 
         async for message in team.run_stream(task=task):
             message_count += 1
@@ -64,31 +57,10 @@ async def main():
             if hasattr(message, 'source') and hasattr(message, 'content'):
                 print(f"\n[{message.source}]: {message.content}")
 
-                token_count = 0
                 if hasattr(message, 'models_usage'):
                     cost_counter.add(message.models_usage)
                     print(message.models_usage)
-                    if hasattr(message.models_usage, 'completion_tokens'):
-                        token_count = message.models_usage.completion_tokens
 
-                # Log message to metrics tracker
-                metrics_tracker.log_message(
-                    source=message.source,
-                    content=message.content,
-                    token_count=token_count,
-                    message_type="text"
-                )
-
-                # Log interaction if there was a previous agent
-                if previous_agent and previous_agent != message.source:
-                    metrics_tracker.log_interaction(
-                        from_agent=previous_agent,
-                        to_agent=message.source,
-                        message_length=len(message.content),
-                        tokens=token_count
-                    )
-
-                previous_agent = message.source
 
         end_time = time.time()
         duration = end_time - start_time
@@ -104,35 +76,7 @@ async def main():
         mlflow.log_metric("completion_tokens", cost_counter.completion)
         mlflow.log_metric("duration_seconds", duration)
 
-        # Log all agent metrics to MLflow
-        print("\n[METRICS] Computing advanced agent metrics...")
-        metrics_tracker.log_all_metrics_to_mlflow()
-
-        # Generate and save report
-        print("\n[METRICS] Generating analysis report...")
-        report_path = metrics_tracker.save_report(f"agent_metrics_{exam_date}.txt")
-        print(f"[METRICS] Report saved to: {report_path}")
-
-        # Print summary to console
-        print("\n" + metrics_tracker.generate_report())
-
-        # Log additional derived metrics
-        conversation_velocity = metrics_tracker.calculate_conversation_velocity()
-        mlflow.log_metric("messages_per_second", conversation_velocity)
-
-        # Log communication efficiency
-        comm_graph = metrics_tracker.calculate_communication_graph()
-        total_transitions = sum(
-            sum(targets.values()) for targets in comm_graph.values()
-        )
-        mlflow.log_metric("total_agent_transitions", total_transitions)
-
-    # Wait before analysis
-    time.sleep(3)
-
-    # Perform framework overhead analysis
-    print("\n[ANALYSIS] Analyzing framework overhead...")
-    analyze_framework_overhead("AutoGen_Exam_Assessment")
+        calculate_overhead(run.info.run_id, duration)
 
 
 if __name__ == '__main__':

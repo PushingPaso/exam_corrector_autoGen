@@ -3,8 +3,6 @@ Enhanced MLflow utilities with agent metrics integration.
 """
 
 import mlflow
-import pandas as pd
-from typing import Optional
 
 
 class SimpleTokenCounter:
@@ -24,76 +22,41 @@ class SimpleTokenCounter:
 
         self.total = self.prompt + self.completion
 
+from mlflow.entities import SpanType
 
-def analyze_framework_overhead(experiment_name: str):
-    """
-    Analyze framework overhead by comparing runs within an experiment.
 
-    Args:
-        experiment_name: Name of the MLflow experiment to analyze
-    """
-    try:
-        experiment = mlflow.get_experiment_by_name(experiment_name)
-        if not experiment:
-            print(f"[ANALYSIS] Experiment '{experiment_name}' not found")
-            return
+def calculate_overhead(run_id, total_time):
+    """Calculate the overhead time (total - tool execution time)"""
+    client = mlflow.MlflowClient()
 
-        runs = mlflow.search_runs(
-            experiment_ids=[experiment.experiment_id],
-            order_by=["start_time DESC"]
-        )
+    # Get run info
+    run = client.get_run(run_id)
+    run_info = run.info
 
-        if runs.empty:
-            print(f"[ANALYSIS] No runs found in experiment '{experiment_name}'")
-            return
+    total_duration_ms = total_time * 1000
 
-        print("\n" + "=" * 80)
-        print(f"FRAMEWORK OVERHEAD ANALYSIS: {experiment_name}")
-        print("=" * 80)
+    # Get all traces for the run
+    traces = client.search_traces(
+        locations=[run_info.experiment_id],
+        filter_string=f"attributes.run_id = '{run_id}'"
+    )
 
-        # Display basic stats
-        print(f"\nTotal Runs: {len(runs)}")
-        print(f"\nRecent Runs Summary:")
-        print("-" * 80)
+    # Sum tool execution times
+    tool_duration_ms = 0
+    if traces:
+        for trace in traces:
+            for span in trace.data.spans:
+                if span.span_type == SpanType.TOOL:
+                    tool_duration_ms += (span.end_time_ns - span.start_time_ns) / 1_000_000
 
-        for idx, row in runs.head(5).iterrows():
-            run_id = row['run_id'][:8]
-            duration = row.get('metrics.duration_seconds', 0)
-            total_tokens = row.get('metrics.total_tokens', 0)
+    # Calculate overhead
+    overhead_ms = total_duration_ms - tool_duration_ms
 
-            print(f"\nRun {run_id}:")
-            print(f"  Duration: {duration:.2f}s")
-            print(f"  Total Tokens: {int(total_tokens)}")
-
-            # Agent-specific metrics
-            agent_metrics = [col for col in runs.columns if col.startswith('metrics.agent_')]
-            if agent_metrics:
-                print(f"  Agent Metrics Found: {len(agent_metrics)}")
-                for metric in sorted(agent_metrics)[:5]:  # Show first 5
-                    value = row.get(metric, 0)
-                    metric_name = metric.replace('metrics.', '')
-                    print(f"    {metric_name}: {value:.2f}")
-
-        # Statistical analysis if we have multiple runs
-        if len(runs) > 1:
-            print("\n" + "-" * 80)
-            print("STATISTICAL SUMMARY")
-            print("-" * 80)
-
-            numeric_metrics = ['metrics.duration_seconds', 'metrics.total_tokens',
-                               'metrics.prompt_tokens', 'metrics.completion_tokens']
-
-            for metric in numeric_metrics:
-                if metric in runs.columns:
-                    values = runs[metric].dropna()
-                    if not values.empty:
-                        print(f"\n{metric.replace('metrics.', '')}:")
-                        print(f"  Mean: {values.mean():.2f}")
-                        print(f"  Std: {values.std():.2f}")
-                        print(f"  Min: {values.min():.2f}")
-                        print(f"  Max: {values.max():.2f}")
-
-        print("\n" + "=" * 80)
-
-    except Exception as e:
-        print(f"[ANALYSIS ERROR] {str(e)}")
+    print("\n" + "=" * 60)
+    print("⏱️  TIME ANALYSIS")
+    print("=" * 60)
+    print(f"Total Duration:       {total_duration_ms / 1000:.2f}s ({total_duration_ms / 60000:.2f}m)")
+    print(f"Tool Execution Time:  {tool_duration_ms / 1000:.2f}s ({tool_duration_ms / 60000:.2f}m)")
+    print(f"Overhead Time:        {overhead_ms / 1000:.2f}s ({overhead_ms / 60000:.2f}m)")
+    print(f"Overhead Percentage:  {(overhead_ms / total_duration_ms * 100):.1f}%")
+    print("=" * 60 + "\n")
