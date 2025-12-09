@@ -4,11 +4,10 @@ Provides sophisticated analysis of agent communication, performance, and behavio
 """
 
 import time
-import json
-from dataclasses import dataclass, field
-from typing import Dict, List, Optional, Any
 from collections import defaultdict
+from dataclasses import dataclass, field
 from datetime import datetime
+from typing import Dict, List, Optional, Any
 import mlflow
 
 
@@ -19,7 +18,7 @@ class AgentMessage:
     source: str
     content: str
     token_count: int = 0
-    message_type: str = "text"  # text, tool_call, tool_result
+    message_type: str = "text"
 
     @property
     def latency_from_start(self) -> float:
@@ -344,46 +343,3 @@ class AgentMetricsTracker:
 
         mlflow.log_artifact(filepath)
         return filepath
-
-
-# Convenience functions for easy integration
-
-def create_tracker(experiment_name: str = "Agent_Communication_Analysis") -> AgentMetricsTracker:
-    """Create and return a new metrics tracker."""
-    return AgentMetricsTracker(experiment_name)
-
-
-def analyze_autogen_stream(stream, tracker: Optional[AgentMetricsTracker] = None):
-    """
-    Analyze an AutoGen stream and extract metrics.
-
-    Args:
-        stream: AutoGen async stream
-        tracker: Optional existing tracker, creates new one if None
-
-    Returns:
-        AgentMetricsTracker with collected metrics
-    """
-    if tracker is None:
-        tracker = AgentMetricsTracker()
-
-    tracker.start_tracking()
-
-    async def process_stream():
-        async for message in stream:
-            if hasattr(message, 'source') and hasattr(message, 'content'):
-                token_count = 0
-                if hasattr(message, 'models_usage'):
-                    usage = message.models_usage
-                    if hasattr(usage, 'completion_tokens'):
-                        token_count = usage.completion_tokens
-
-                tracker.log_message(
-                    source=message.source,
-                    content=message.content,
-                    token_count=token_count
-                )
-
-            yield message
-
-    return process_stream(), tracker

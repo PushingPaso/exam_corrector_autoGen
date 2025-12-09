@@ -1,7 +1,8 @@
 import json
 from dataclasses import dataclass, field
 from typing import Dict
-
+import mlflow
+from mlflow.entities import SpanType
 
 from exam import DIR_ROOT
 from exam import get_questions_store, load_exam_from_yaml
@@ -65,7 +66,9 @@ class ExamMCPServer:
 
     # -------------------------------------------
 
+
     @staticmethod
+    @mlflow.trace(span_type=SpanType.TOOL)
     def list_students() -> str:
         """
         Retrieve the list of all student emails currently loaded in the exam context.
@@ -81,6 +84,7 @@ class ExamMCPServer:
         return json.dumps(students, indent=2)
 
     @staticmethod
+    @mlflow.trace(span_type=SpanType.TOOL)
     async def load_checklist(question_ids: list[str]) -> str:
         """
         Load assessment checklists for a *list* of question IDs into memory.
@@ -121,6 +125,7 @@ class ExamMCPServer:
         })
 
     @staticmethod
+    @mlflow.trace(span_type=SpanType.TOOL)
     async def load_exam_from_yaml_tool(questions_file: str, responses_file: str, grades_file: str = None) -> str:
         """
         Load an entire exam from YAML files.
@@ -156,6 +161,7 @@ class ExamMCPServer:
             return json.dumps({"error": str(e)})
 
     @staticmethod
+    @mlflow.trace(span_type=SpanType.TOOL)
     async def assess_students_batch(student_emails: list[str]) -> str:
         """
         Assess a BATCH of students in one go.

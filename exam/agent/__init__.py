@@ -1,8 +1,12 @@
 from autogen_agentchat.agents import AssistantAgent
 from exam.llm_provider import get_llm
 from exam.mcp import ExamMCPServer
+import mlflow
+from mlflow.entities import SpanType
 
 
+
+@mlflow.trace(span_type=SpanType.AGENT)
 def get_agents():
     mcp = ExamMCPServer()
     model = get_llm()
@@ -17,7 +21,7 @@ def get_agents():
            IMPORTANT: Provide ONLY the filenames (e.g., "se-2025-06-05-questions.yml"), DO NOT include paths like "static/".
            Expected filenames pattern: se-{DATE}-questions.yml, se-{DATE}-responses.yml, se-{DATE}-grades.yml.
         2. The output will contain 'question_ids'. Call `load_checklist` with these IDs.
-        3. ONLY AFTER both tools success, output: "DATA READY".
+        3. ONLY AFTER both tools success, output: "DATA READY", after every student exam is been evaluated output: "TERMINATE" .
         """
     )
     AssessorAgent = AssistantAgent(
@@ -30,7 +34,8 @@ def get_agents():
 
         YOUR WORKFLOW:
         1. Call `list_students` to get the emails.
-        2. Call `assess_students_batch` passing ALL emails at once and Immediately say "TERMINATE" when assess_students_batch methods ends.
+        2. Call `assess_students_batch` passing ALL emails at once and after 
+        3. Say "TERMINATE" in chat when assess_students_batch methods ends.
         """
     )
 

@@ -30,16 +30,17 @@ def get_llm(model_name: str = None, output_format=None):
     Creates and returns an OpenAIChatCompletionClient configured for Groq.
     """
     if model_name is None:
-        model_name = "llama-3.3-70b-versatile"
+        #model_name = "llama-3.3-70b-versatile"
         #model_name= "llama-3.1-8b-instant"
+        model_name = "gpt-4o"
 
-    api_key = ensure_groq_api_key()
+    api_key = ensure_openai_api_key()
 
-    base_url = "https://api.groq.com/openai/v1"
+    #base_url = "https://api.groq.com/openai/v1"
 
     model_client = OpenAIChatCompletionClient(
         model=model_name,
-        base_url=base_url,
+        #base_url=base_url,
         api_key=api_key,
         model_info={
             "vision": False,

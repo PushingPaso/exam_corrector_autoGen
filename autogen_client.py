@@ -46,7 +46,7 @@ async def main():
             termination_condition=TextMentionTermination("TERMINATE")
         )
 
-        task = f"Start the exam assessment for date {exam_date}. First load exam AND checklists. Then assess the students."
+        task = f"Start the exam assessment for date {exam_date}. First load exam AND checklists calling the uploader agent. Then assess the students with the assessor agent."
 
         print(f"\n[AUTOGEN] Starting Assessment for {exam_date}...\n")
 
@@ -64,10 +64,10 @@ async def main():
             if hasattr(message, 'source') and hasattr(message, 'content'):
                 print(f"\n[{message.source}]: {message.content}")
 
-                # Calculate tokens for this message
                 token_count = 0
                 if hasattr(message, 'models_usage'):
                     cost_counter.add(message.models_usage)
+                    print(message.models_usage)
                     if hasattr(message.models_usage, 'completion_tokens'):
                         token_count = message.models_usage.completion_tokens
 
@@ -133,47 +133,6 @@ async def main():
     # Perform framework overhead analysis
     print("\n[ANALYSIS] Analyzing framework overhead...")
     analyze_framework_overhead("AutoGen_Exam_Assessment")
-
-    # Additional analysis options
-    print("\n[ANALYSIS] You can run additional analyses:")
-    print("  - from exam.ml_flow import compare_agent_performance")
-    print("  - from exam.ml_flow import export_metrics_to_csv")
-    print("  - from exam.ml_flow import create_experiment_comparison")
-
-
-async def run_comparative_analysis():
-    """
-    Run a comparative analysis across multiple exam dates.
-    Useful for understanding how agent performance varies.
-    """
-    from exam.ml_flow import create_experiment_comparison, compare_agent_performance
-
-    print("\n[COMPARATIVE ANALYSIS] Starting...")
-
-    # Compare different runs
-    create_experiment_comparison([
-        "AutoGen_Exam_Assessment",
-        # Add other experiment names here if you have them
-    ])
-
-    # Compare specific agents
-    compare_agent_performance(
-        "AutoGen_Exam_Assessment",
-        agent_names=["uploader", "assessor"]
-    )
-
-
-async def export_analysis():
-    """
-    Export all metrics for external analysis (e.g., in Excel, Python notebooks).
-    """
-    from exam.ml_flow import export_metrics_to_csv
-
-    print("\n[EXPORT] Exporting metrics...")
-    export_metrics_to_csv(
-        "AutoGen_Exam_Assessment",
-        output_file=f"metrics_export_{time.strftime('%Y%m%d_%H%M%S')}.csv"
-    )
 
 
 if __name__ == '__main__':
