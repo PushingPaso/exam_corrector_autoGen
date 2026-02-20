@@ -1,0 +1,197 @@
+STUDENT ASSESSMENT SUMMARY
+======================================================================
+
+Student: 14550a69374ec620ccf9ff6b6ef02ef666ef72f088d5b966906116d5b20dc0c4570584d3a7a5e15b8333fcfd53bc8bfaa76f03832172bea8aafdf4a567351e53
+Calculated Score: 20.25/27.0
+Calculated Percentage: 75.0%
+Original Moodle Grade: 20.50/27.00
+Scoring System: 70% Core + 30% Important_Details
+
+======================================================================
+
+Question 1: Definition-33
+----------------------------------------------------------------------
+Calculated Score: 2.55/3.0
+Original Grade: 2.00/3.0
+Difference: +0.55
+Breakdown: Core: 2/2 (100% -> 70%) + Important: 1/2 (50% -> 15%) = 85% of 3.0 = 2.55 [70% Core + 30% Important]
+
+CORE Elements:
+  [OK] Compiled programming languages are translated into machine code via a compiler before execution.
+       You have demonstrated a solid understanding of the core concept by explaining that compiled programming languages are pre-compiled into machine code and stored in a separate file before execution. Your understanding was well articulated with different phrasing, acknowledging the essential distinction between compiled and interpreted languages. Well done!
+
+  [OK] Interpreted programming languages are executed directly by an interpreter without a separate compilation step.
+       You demonstrated a clear understanding of the difference between compiled and interpreted programming languages, particularly in capturing that interpreted languages execute code at runtime without a separate compilation step. Well done!
+
+Important Details:
+  [OK] Compiled languages generally result in faster execution as the machine code is optimized for the target CPU.
+       You mentioned that compiled languages generally result in faster execution due to the absence of overhead at runtime, which aligns with the idea that machine code is optimized for the target CPU. Good job on covering this important detail.
+
+  [MISSING] Interpreted languages can lead to slower execution, but the write-test-debug cycle can be faster.
+       You did a good job explaining the key differences between compiled and interpreted languages. However, you missed mentioning that interpreted languages can lead to a faster write-test-debug cycle. Including this detail would have satisfied the requirement fully. Keep up the good work!
+
+
+======================================================================
+
+Question 2: Modelling-2
+----------------------------------------------------------------------
+Calculated Score: 2.55/3.0
+Original Grade: 2.00/3.0
+Difference: +0.55
+Breakdown: Core: 2/2 (100% -> 70%) + Important: 1/2 (50% -> 15%) = 85% of 3.0 = 2.55 [70% Core + 30% Important]
+
+CORE Elements:
+  [OK] Software systems are modelled using the Unified Modelling Language (UML)
+       You demonstrated a clear understanding of the core concept by mentioning that software systems are modelled using the Unified Modelling Language (UML). You also provided examples of different diagram types, which shows a solid grasp of the topic. Well done!
+
+  [OK] Models involve abstract and visual ways to represent software systems beyond source code
+       You demonstrated an understanding of how software can be modelled through abstract and visual representations, as indicated by your discussion of UML and its diagram types. Well done on recognizing the visual aspect of modelling software systems.
+
+Important Details:
+  [OK] The model includes classes or functions representing relevant concepts and their relationships
+       You effectively mentioned class diagrams, which represent concepts and their relationships, fulfilling the important detail required.
+
+  [MISSING] Non-functional aspects such as UI, persistence, communication, and security are considered in the model
+       You did a great job explaining how software can be modelled using UML and its various diagrams. However, you did not mention non-functional aspects like UI, persistence, communication, and security. Including these aspects in your answer would provide a more comprehensive view of software modelling.
+
+
+======================================================================
+
+Question 3: DistributedSystems-30
+----------------------------------------------------------------------
+Calculated Score: 2.55/3.0
+Original Grade: 2.00/3.0
+Difference: +0.55
+Breakdown: Core: 2/2 (100% -> 70%) + Important: 1/2 (50% -> 15%) = 85% of 3.0 = 2.55 [70% Core + 30% Important]
+
+CORE Elements:
+  [OK] The broker mediates communication by receiving messages from producers and forwarding them to consumers.
+       You demonstrated a good understanding of the core concept by describing how the broker handles messages between producers and consumers, acting as a mediator in message communication. Well done on capturing the essential role of the broker in a distributed system!
+
+  [OK] The broker uses queues to store messages in a FIFO (First In, First Out) manner, ensuring messages are not lost if consumers are unavailable.
+       You demonstrated an understanding of the core concept by explaining how a broker uses a queue to handle messages in a FIFO manner. This shows you grasp the main idea of how queues function in distributed systems. Good job!
+
+Important Details:
+  [OK] The broker can enable decoupling of consumers and producers, allowing for asynchronous communication.
+       You mention the separation of communications between producers and consumers, which aligns with the concept of enabling decoupling for asynchronous communication. Good job recognizing this important detail.
+
+  [MISSING] Messages stored in a queue by the broker can be consumed by multiple consumers, potentially allowing for load balancing and improved system scalability.
+       You provided a good explanation of how a broker handles messages between producers and consumers. However, you missed the detail about messages in a queue supporting load balancing and improving system scalability through consumption by multiple consumers. Including this would enhance your answer by highlighting an important advantage of using queues in distributed systems.
+
+
+======================================================================
+
+Question 4: GHA-1
+----------------------------------------------------------------------
+Calculated Score: 1.05/3.0
+Original Grade: 2.00/3.0
+Difference: -0.95
+Breakdown: Core: 1/2 (50% -> 35%) + Important: 0/2 (0% -> 0%) = 35% of 3.0 = 1.05 [70% Core + 30% Important]
+
+CORE Elements:
+  [OK] GitHub Actions is a CI/CD (Continuous Integration/Continuous Deployment) tool integrated into GitHub that automates repetitive tasks.
+       You demonstrated a clear understanding of GitHub Actions as a CI/CD tool integrated into GitHub to automate tasks associated with a repository. The mention of automating operations such as maintenance, versioning, and delivery, as well as the ability to test across different environments, aligns well with the core concept. Well done!
+
+  [MISSING] Workflows are configured using YAML files located in the .github/workflows/ folder on the default branch of the repository.
+       While your answer describes the general purpose of GitHub Actions and mentions YAML configurations, it does not explicitly connect this to the concept of workflows being configured in YAML files located in the .github/workflows/ folder on the default branch of the repository. Make sure to mention this specific aspect to demonstrate understanding of how and where these configurations are managed.
+
+Important Details:
+  [MISSING] Workflows are composed of jobs, which are sequential lists of steps that run in parallel unless specified otherwise.
+       You did a good job explaining the purpose and capabilities of GitHub Actions as a CI/CD platform. However, you didn't mention the important detail about workflows being composed of jobs, which are sequential lists of steps that can run in parallel unless specified otherwise. Including this would demonstrate a more comprehensive understanding of how GitHub Actions operates.
+
+  [MISSING] Runners are virtual machines executing the jobs, which can be GitHub-hosted or self-hosted.
+       You provided a good overview of GitHub Actions as a CI/CD platform and its use in testing across multiple environments. However, your answer is missing the detail about 'runners', which are the virtual machines executing the jobs, and can be either GitHub-hosted or self-hosted. Including this aspect would complete your answer with the necessary important detail.
+
+
+======================================================================
+
+Question 5: Git-24
+----------------------------------------------------------------------
+Calculated Score: 3.00/3.0
+Original Grade: 3.00/3.0
+Difference: +0.00
+Breakdown: Core: 2/2 (100% -> 100%) = 100% of 3.0 = 3.0 [100% Core (no Important details)]
+
+CORE Elements:
+  [OK] git clone
+       You have correctly identified and explained the use of the 'git clone' command, which is the core concept required. Your description demonstrates a clear understanding of the command and its effect on cloning the repository to a local directory. Additionally, including details about 'git fetch' and 'git pull' shows a deeper understanding of managing a repository locally versus remotely. Well done!
+
+  [OK] https://github.com/YOUR_GITHUB_USERNAME/testable-calculator
+       You have successfully demonstrated an understanding of how to clone a GitHub repository using the 'git clone URL' command. Additionally, you mentioned running 'git fetch' and 'git pull' for updating and integrating changes, which shows a good grasp of the process involved after cloning. Well done!
+
+
+======================================================================
+
+Question 6: Lincense-3
+----------------------------------------------------------------------
+Calculated Score: 3.00/3.0
+Original Grade: 3.00/3.0
+Difference: +0.00
+Breakdown: Core: 1/1 (100% -> 70%) + Important: 2/2 (100% -> 30%) = 100% of 3.0 = 3.0 [70% Core + 30% Important]
+
+CORE Elements:
+  [OK] Copyleft is a practice, not a legal right, where the creator surrenders some, but not all, rights under copyright law.
+       You have successfully captured the core understanding of copyleft as a practice, not a legal right, where creators surrender some of their rights under copyright law. Your answer highlights the way copyleft allows developers to set rules for the use of their code, which aligns well with the fundamental concept. Well done on demonstrating this understanding.
+
+Important Details:
+  [OK] Copyleft licenses can be strong or weak, affecting whether derived works inherit the copyleft license.
+       You have successfully addressed the important detail by mentioning that copyleft licenses can be strong or weak and how they affect whether derived works are required to inherit the copyleft license. Good job on clearly explaining this aspect.
+
+  [OK] Can be full or partial, indicating whether all or some parts are covered by the copyleft license.
+       You correctly mentioned that copyleft can cover the whole software or only portions of it, indicating an understanding of full or partial coverage. Well done!
+
+
+======================================================================
+
+Question 7: Python-15
+----------------------------------------------------------------------
+Calculated Score: 0.00/3.0
+Original Grade: 2.00/3.0
+Difference: -2.00
+Breakdown: Core: 0/1 (0% -> 0%) + Important: 0/1 (0% -> 0%) = 0% of 3.0 = 0.0 [70% Core + 30% Important]
+
+CORE Elements:
+  [MISSING] Class attributes are marked as private by prefixing their names with double underscores (__) and not ending with double underscores.
+       You have a misunderstanding regarding how private class attributes are marked in Python. Class attributes are considered private when prefixed with double underscores (__), not a single underscore (_). Your answer does correctly mention the concept of encapsulation, but the core concept of using double underscores for private attributes is missing. Please review this aspect.
+
+Important Details:
+  [MISSING] Private attributes are not accessible from outside the class or even from derived classes.
+       You correctly mentioned using a single underscore to mark an attribute as private for encapsulation purposes. However, the missing detail is about the accessibility of such attributes. Remember, in Python, a single underscore is a convention to indicate a 'protected' attribute (suggesting it should not be accessed directly), but it does not prevent access from outside the class or derived classes. For true private attributes, a double underscore is used, which makes the attribute name mangled and less accessible from outside the class. Please include this distinction for a more accurate understanding.
+
+
+======================================================================
+
+Question 8: Testing-12
+----------------------------------------------------------------------
+Calculated Score: 2.55/3.0
+Original Grade: 2.00/3.0
+Difference: +0.55
+Breakdown: Core: 1/1 (100% -> 70%) + Important: 1/2 (50% -> 15%) = 85% of 3.0 = 2.55 [70% Core + 30% Important]
+
+CORE Elements:
+  [OK] Regression in software testing is a situation where a feature that was previously working is now compromised after a change.
+       You successfully demonstrated an understanding of regression in software testing. You described it as a situation where a working feature is compromised after changes, which aligns with the core concept. Well done.
+
+Important Details:
+  [OK] A regression can occur when a new fix breaks another feature.
+       You successfully identified that regression can involve a bug or undesired loss of functionality as a result of ongoing changes, which aligns with the idea that a new fix can break another feature. Well done on capturing the essential detail.
+
+  [MISSING] Creating a test case before the fix can help prevent the issue from being reintroduced.
+       You explained the concept of regression well, but you missed mentioning the importance of creating a test case before the fix. This is an important detail because it helps to ensure that the issue does not reappear in future code changes.
+
+
+======================================================================
+
+Question 9: Versioning-27
+----------------------------------------------------------------------
+Calculated Score: 3.00/3.0
+Original Grade: 2.50/3.0
+Difference: +0.50
+Breakdown: Core: 1/1 (100% -> 100%) = 100% of 3.0 = 3.0 [100% Core (no Important details)]
+
+CORE Elements:
+  [OK] The commit type for adding a new public method to a Python project class or module should be 'feat'.
+       You correctly identified the addition of a new public method as a 'feat' type commit, demonstrating your understanding that this represents new functionality in a conventional commit context. Well done!
+
+
+======================================================================

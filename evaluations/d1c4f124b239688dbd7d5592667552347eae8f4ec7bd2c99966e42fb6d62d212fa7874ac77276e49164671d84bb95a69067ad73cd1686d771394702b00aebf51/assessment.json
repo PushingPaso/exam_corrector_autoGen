@@ -1,0 +1,428 @@
+{
+  "student_email": "d1c4f124b239688dbd7d5592667552347eae8f4ec7bd2c99966e42fb6d62d212fa7874ac77276e49164671d84bb95a69067ad73cd1686d771394702b00aebf51",
+  "calculated_score": 20.7,
+  "max_score": 27.0,
+  "percentage": 76.7,
+  "scoring_system": "70% Core + 30% Important_Details",
+  "assessments": [
+    {
+      "status": "assessed",
+      "score": 2.55,
+      "max_score": 3.0,
+      "statistics": {
+        "core": {
+          "total": 2,
+          "satisfied": 2,
+          "percentage": 100.0,
+          "weight": 0.7
+        },
+        "details_important": {
+          "total": 2,
+          "satisfied": 1,
+          "percentage": 50.0,
+          "weight": 0.3
+        },
+        "scoring_system": "70% Core + 30% Important"
+      },
+      "breakdown": "Core: 2/2 (100% -> 70%) + Important: 1/2 (50% -> 15%) = 85% of 3.0 = 2.55 [70% Core + 30% Important]",
+      "feature_assessments": [
+        {
+          "feature": "Compiled programming languages are translated into machine code via a compiler before execution.",
+          "feature_type": "CORE",
+          "satisfied": true,
+          "motivation": "You have demonstrated a clear understanding of the core concept by explaining that compiled programming languages are translated into machine code via a compiler before execution. Well done on capturing the main idea."
+        },
+        {
+          "feature": "Interpreted programming languages are executed directly by an interpreter without a separate compilation step.",
+          "feature_type": "CORE",
+          "satisfied": true,
+          "motivation": "You have correctly understood the core concept that interpreted programming languages are executed directly by an interpreter without a separate compilation step. Your explanation clearly articulates the difference between compiled and interpreted languages, focusing on the execution process for each and the implications this has on performance and flexibility. Well done!"
+        },
+        {
+          "feature": "Compiled languages generally result in faster execution as the machine code is optimized for the target CPU.",
+          "feature_type": "DETAILS_IMPORTANT",
+          "satisfied": true,
+          "motivation": "You accurately highlighted that compiled languages tend to have faster execution, which aligns with the notion that machine code is optimized for the target CPU. Good job capturing this important detail."
+        },
+        {
+          "feature": "Interpreted languages can lead to slower execution, but the write-test-debug cycle can be faster.",
+          "feature_type": "DETAILS_IMPORTANT",
+          "satisfied": false,
+          "motivation": "You mentioned the speed advantage of compiled languages and less flexibility in debugging, but you didn't address the important detail that interpreted languages, despite being slower, can lead to a faster write-test-debug cycle. Including this aspect would make the answer more complete."
+        }
+      ],
+      "question_number": 1,
+      "question_id": "Definition-33",
+      "question_text": "What is the difference between compiled and interpreted programming languages?",
+      "student_response": "compiled programming languages need to be translated into machine code before execution by a compiler.      interpreted programming languages are interpreted (translated line by line) at run time by the machine, without using a compiler.      the main consequence is that the execution of compiled programs is faster, and compiled languages also make a more efficient use of memory. on the other hand, they require a a separate compilation step, they are less flexible in debugging and are also potentially less portable than programs written in interpreted languages."
+    },
+    {
+      "status": "assessed",
+      "score": 2.55,
+      "max_score": 3.0,
+      "statistics": {
+        "core": {
+          "total": 2,
+          "satisfied": 2,
+          "percentage": 100.0,
+          "weight": 0.7
+        },
+        "details_important": {
+          "total": 2,
+          "satisfied": 1,
+          "percentage": 50.0,
+          "weight": 0.3
+        },
+        "scoring_system": "70% Core + 30% Important"
+      },
+      "breakdown": "Core: 2/2 (100% -> 70%) + Important: 1/2 (50% -> 15%) = 85% of 3.0 = 2.55 [70% Core + 30% Important]",
+      "feature_assessments": [
+        {
+          "feature": "Software systems are modelled using the Unified Modelling Language (UML)",
+          "feature_type": "CORE",
+          "satisfied": true,
+          "motivation": "You have successfully demonstrated an understanding of how software can be modelled using the main concept of the Unified Modelling Language (UML). You also provided examples of UML diagrams, which further shows your grasp on the topic. Well done!"
+        },
+        {
+          "feature": "Models involve abstract and visual ways to represent software systems beyond source code",
+          "feature_type": "CORE",
+          "satisfied": true,
+          "motivation": "You demonstrated a clear understanding of how software can be modelled using abstract and visual representations. By referring to UML diagrams like use case and class diagrams, you've highlighted different ways to represent software systems beyond source code effectively. Well done!"
+        },
+        {
+          "feature": "The model includes classes or functions representing relevant concepts and their relationships",
+          "feature_type": "DETAILS_IMPORTANT",
+          "satisfied": true,
+          "motivation": "You successfully identified class diagrams as part of the software modeling process, which includes classes representing concepts and their relationships. This demonstrates your understanding of how software can be modelled using relevant models."
+        },
+        {
+          "feature": "Non-functional aspects such as UI, persistence, communication, and security are considered in the model",
+          "feature_type": "DETAILS_IMPORTANT",
+          "satisfied": false,
+          "motivation": "You provided a good overview of UML diagrams, highlighting use case and class diagrams. However, to satisfy the important detail, you need to mention how non-functional aspects like UI, persistence, communication, and security are considered in the model. Make sure to address these non-functional aspects in your answer to fully capture this important detail."
+        }
+      ],
+      "question_number": 2,
+      "question_id": "Modelling-2",
+      "question_text": "How can software be modelled?",
+      "student_response": "software can be modelled using model diagrams, such as UML (unified modelling language). there are different types of UML diagrams, such as use cases diagrams, class diagrams, etc.      the use cases diagram, for example, shows how the users are supposed to interact with the software. the class diagram, instead, is more \"technical\" and shows the classes that compose the software, their attributes and how they are related to each other "
+    },
+    {
+      "status": "assessed",
+      "score": 2.55,
+      "max_score": 3.0,
+      "statistics": {
+        "core": {
+          "total": 2,
+          "satisfied": 2,
+          "percentage": 100.0,
+          "weight": 0.7
+        },
+        "details_important": {
+          "total": 2,
+          "satisfied": 1,
+          "percentage": 50.0,
+          "weight": 0.3
+        },
+        "scoring_system": "70% Core + 30% Important"
+      },
+      "breakdown": "Core: 2/2 (100% -> 70%) + Important: 1/2 (50% -> 15%) = 85% of 3.0 = 2.55 [70% Core + 30% Important]",
+      "feature_assessments": [
+        {
+          "feature": "The broker mediates communication by receiving messages from producers and forwarding them to consumers.",
+          "feature_type": "CORE",
+          "satisfied": true,
+          "motivation": "You demonstrated a solid understanding of the broker's role in distributed systems. You correctly identified the broker as an intermediary in communication, managing queues to facilitate message exchange between producers and consumers."
+        },
+        {
+          "feature": "The broker uses queues to store messages in a FIFO (First In, First Out) manner, ensuring messages are not lost if consumers are unavailable.",
+          "feature_type": "CORE",
+          "satisfied": true,
+          "motivation": "You effectively demonstrated the core understanding that brokers use queues to store messages, facilitating reliable message delivery even when consumers are not currently available. By explaining how messages are stored until consumers are ready, you captured the essence of maintaining message integrity in distributed systems."
+        },
+        {
+          "feature": "The broker can enable decoupling of consumers and producers, allowing for asynchronous communication.",
+          "feature_type": "DETAILS_IMPORTANT",
+          "satisfied": true,
+          "motivation": "You demonstrated a clear understanding of how a broker can exploit a queue to enable decoupling of consumers and producers, allowing for asynchronous communication. Well done on capturing the important detail in your explanation."
+        },
+        {
+          "feature": "Messages stored in a queue by the broker can be consumed by multiple consumers, potentially allowing for load balancing and improved system scalability.",
+          "feature_type": "DETAILS_IMPORTANT",
+          "satisfied": false,
+          "motivation": "Your answer demonstrates a solid understanding of the role of a broker and queue in ensuring reliable and asynchronous communication in distributed systems, which is commendable. However, it misses mentioning the specific concept of load balancing and improved system scalability through multiple consumers accessing the queue. Including this would fully capture the importance of the system's scalability benefits."
+        }
+      ],
+      "question_number": 3,
+      "question_id": "DistributedSystems-30",
+      "question_text": "In the context of distributed systems, how could a broker exploit a queue?",
+      "student_response": "in a distributed system, a broker can exploit a queue to coordinate communication between producers and consumers in a decoupled and reliable manner.      the broker can act as intermediary, decoupling the producer from the consumer. the producer sends messages to the broker, which stores them in a queue, and then the consumer independently retrieves the messages from the queue.      in this way, the broker also ensures message delivery, because the messages are stored in the queue until the consumer is ready. this allows asynchronous communication, so producers can continue their work without having to wait for consumers to process messages."
+    },
+    {
+      "status": "assessed",
+      "score": 1.05,
+      "max_score": 3.0,
+      "statistics": {
+        "core": {
+          "total": 2,
+          "satisfied": 1,
+          "percentage": 50.0,
+          "weight": 0.7
+        },
+        "details_important": {
+          "total": 2,
+          "satisfied": 0,
+          "percentage": 0.0,
+          "weight": 0.3
+        },
+        "scoring_system": "70% Core + 30% Important"
+      },
+      "breakdown": "Core: 1/2 (50% -> 35%) + Important: 0/2 (0% -> 0%) = 35% of 3.0 = 1.05 [70% Core + 30% Important]",
+      "feature_assessments": [
+        {
+          "feature": "GitHub Actions is a CI/CD (Continuous Integration/Continuous Deployment) tool integrated into GitHub that automates repetitive tasks.",
+          "feature_type": "CORE",
+          "satisfied": true,
+          "motivation": "You demonstrated a clear understanding of GitHub Actions as a CI/CD tool that automates tasks within GitHub. Well done on capturing the core concept accurately."
+        },
+        {
+          "feature": "Workflows are configured using YAML files located in the .github/workflows/ folder on the default branch of the repository.",
+          "feature_type": "CORE",
+          "satisfied": false,
+          "motivation": "You provided a good overview of what GitHub Actions is used for, mentioning continuous integration and delivery. However, you need to mention that workflows are configured using YAML files located in the .github/workflows/ folder of the repository. This is a key aspect of how GitHub Actions is structured."
+        },
+        {
+          "feature": "Workflows are composed of jobs, which are sequential lists of steps that run in parallel unless specified otherwise.",
+          "feature_type": "DETAILS_IMPORTANT",
+          "satisfied": false,
+          "motivation": "Your answer correctly identifies GitHub Actions as a CI/CD platform for automating workflows. However, it doesn't mention that workflows are composed of jobs, which are sequential lists of steps that can run in parallel unless otherwise specified. Including this detail would provide a more complete understanding of how GitHub Actions organizes and executes tasks."
+        },
+        {
+          "feature": "Runners are virtual machines executing the jobs, which can be GitHub-hosted or self-hosted.",
+          "feature_type": "DETAILS_IMPORTANT",
+          "satisfied": false,
+          "motivation": "You did a great job explaining what GitHub Actions is in terms of continuous integration and delivery. However, you missed mentioning runners, which are virtual machines that execute the jobs and can be either GitHub-hosted or self-hosted. Including this detail would have completed your answer."
+        }
+      ],
+      "question_number": 4,
+      "question_id": "GHA-1",
+      "question_text": "What is GitHub Actions?",
+      "student_response": "Github actions are a continuous integration and continuous delivery platform that allows you to automate your software development workflows directly within your github repository. you can use them to build, test and deploy code"
+    },
+    {
+      "status": "assessed",
+      "score": 3.0,
+      "max_score": 3.0,
+      "statistics": {
+        "core": {
+          "total": 2,
+          "satisfied": 2,
+          "percentage": 100.0,
+          "weight": 1.0
+        },
+        "details_important": {
+          "total": 0,
+          "satisfied": 0,
+          "percentage": 0,
+          "weight": 0.0
+        },
+        "scoring_system": "100% Core (no Important details)"
+      },
+      "breakdown": "Core: 2/2 (100% -> 100%) = 100% of 3.0 = 3.0 [100% Core (no Important details)]",
+      "feature_assessments": [
+        {
+          "feature": "git clone",
+          "feature_type": "CORE",
+          "satisfied": true,
+          "motivation": "You successfully demonstrated an understanding of the core concept of using the 'git clone' command to clone a GitHub repository. You also correctly explained its effect in obtaining a full copy of the repository's data. Well done!"
+        },
+        {
+          "feature": "https://github.com/YOUR_GITHUB_USERNAME/testable-calculator",
+          "feature_type": "CORE",
+          "satisfied": true,
+          "motivation": "You clearly demonstrated your understanding of how to clone a GitHub repository by describing the use of the 'git clone url' command and its effect. Although you did not specifically mention the example URL 'https://github.com/YOUR_GITHUB_USERNAME/testable-calculator', you conveyed the fundamental concept effectively. Well done!"
+        }
+      ],
+      "question_number": 5,
+      "question_id": "Git-24",
+      "question_text": "Let's say you have access to a GitHub repository. How can you clone it? Specify the commands and their effects",
+      "student_response": "to clone a github repository we use the command 'git clone url' in the terminal, where url is the one of the repository we want to clone.      cloning a github repository pulls down a full copy of all the repository data that is online at that moment in time, including all versions of every file and folder for the project."
+    },
+    {
+      "status": "assessed",
+      "score": 0.45,
+      "max_score": 3.0,
+      "statistics": {
+        "core": {
+          "total": 1,
+          "satisfied": 0,
+          "percentage": 0.0,
+          "weight": 0.7
+        },
+        "details_important": {
+          "total": 2,
+          "satisfied": 1,
+          "percentage": 50.0,
+          "weight": 0.3
+        },
+        "scoring_system": "70% Core + 30% Important"
+      },
+      "breakdown": "Core: 0/1 (0% -> 0%) + Important: 1/2 (50% -> 15%) = 15% of 3.0 = 0.45 [70% Core + 30% Important]",
+      "feature_assessments": [
+        {
+          "feature": "Copyleft is a practice, not a legal right, where the creator surrenders some, but not all, rights under copyright law.",
+          "feature_type": "CORE",
+          "satisfied": false,
+          "motivation": "You accurately described the enforcement mechanism of copyleft licenses but did not address the core concept that copyleft is a practice where the creator surrenders some, but not all, rights under copyright law. Make sure to highlight the aspect of creators retaining certain rights while allowing redistribution and modification."
+        },
+        {
+          "feature": "Copyleft licenses can be strong or weak, affecting whether derived works inherit the copyleft license.",
+          "feature_type": "DETAILS_IMPORTANT",
+          "satisfied": true,
+          "motivation": "You have correctly identified that copyleft licenses require derived works to be released under the same license, which aligns with the idea of strong copyleft. Well done for capturing this important detail!"
+        },
+        {
+          "feature": "Can be full or partial, indicating whether all or some parts are covered by the copyleft license.",
+          "feature_type": "DETAILS_IMPORTANT",
+          "satisfied": false,
+          "motivation": "You explained the core concept of copyleft well, highlighting its requirement for modified versions to retain the original license. However, you missed the important detail that copyleft can be full or partial, indicating whether all or some parts of the software are covered by the copyleft license. Make sure to mention this aspect to fully demonstrate your understanding."
+        }
+      ],
+      "question_number": 6,
+      "question_id": "Lincense-3",
+      "question_text": "What is copyleft?",
+      "student_response": "in software licensing, copyleft is a kind of license that allows anyone to use, distribute and modify a software artifact, but it imposes that any modified version has to be released with the same license as the original software."
+    },
+    {
+      "status": "assessed",
+      "score": 3.0,
+      "max_score": 3.0,
+      "statistics": {
+        "core": {
+          "total": 1,
+          "satisfied": 1,
+          "percentage": 100.0,
+          "weight": 0.7
+        },
+        "details_important": {
+          "total": 1,
+          "satisfied": 1,
+          "percentage": 100.0,
+          "weight": 0.3
+        },
+        "scoring_system": "70% Core + 30% Important"
+      },
+      "breakdown": "Core: 1/1 (100% -> 70%) + Important: 1/1 (100% -> 30%) = 100% of 3.0 = 3.0 [70% Core + 30% Important]",
+      "feature_assessments": [
+        {
+          "feature": "Class attributes are marked as private by prefixing their names with double underscores (__) and not ending with double underscores.",
+          "feature_type": "CORE",
+          "satisfied": true,
+          "motivation": "You correctly identified that class attributes are marked as private by prefixing their names with double underscores (__). Well done on demonstrating your understanding of this core concept in Python."
+        },
+        {
+          "feature": "Private attributes are not accessible from outside the class or even from derived classes.",
+          "feature_type": "DETAILS_IMPORTANT",
+          "satisfied": true,
+          "motivation": "You correctly identified that adding two underscores before an attribute's name in Python makes it private. This shows you understand the core concept of marking an attribute as private in Python."
+        }
+      ],
+      "question_number": 7,
+      "question_id": "Python-15",
+      "question_text": "In Python, how would you mark a class attribute as private?",
+      "student_response": "in python you would mark a class attribute as private by adding two underscores before its name. for example a variable named 'address' would be marked as private my calling it __address"
+    },
+    {
+      "status": "assessed",
+      "score": 2.55,
+      "max_score": 3.0,
+      "statistics": {
+        "core": {
+          "total": 1,
+          "satisfied": 1,
+          "percentage": 100.0,
+          "weight": 0.7
+        },
+        "details_important": {
+          "total": 2,
+          "satisfied": 1,
+          "percentage": 50.0,
+          "weight": 0.3
+        },
+        "scoring_system": "70% Core + 30% Important"
+      },
+      "breakdown": "Core: 1/1 (100% -> 70%) + Important: 1/2 (50% -> 15%) = 85% of 3.0 = 2.55 [70% Core + 30% Important]",
+      "feature_assessments": [
+        {
+          "feature": "Regression in software testing is a situation where a feature that was previously working is now compromised after a change.",
+          "feature_type": "CORE",
+          "satisfied": true,
+          "motivation": "You have demonstrated a clear understanding of the core concept by stating that regression testing ensures new changes haven't broken existing functionalities. This aligns with the key idea that regression involves previously working features becoming compromised after changes."
+        },
+        {
+          "feature": "A regression can occur when a new fix breaks another feature.",
+          "feature_type": "DETAILS_IMPORTANT",
+          "satisfied": true,
+          "motivation": "You effectively highlighted that regression testing ensures updates do not introduce new issues or break current features. This demonstrates that you understand the potential for a regression to occur when a new fix may break another feature. Well done!"
+        },
+        {
+          "feature": "Creating a test case before the fix can help prevent the issue from being reintroduced.",
+          "feature_type": "DETAILS_IMPORTANT",
+          "satisfied": false,
+          "motivation": "Your answer does a good job explaining the concept of regression testing and its importance in maintaining software stability after updates. However, it misses the important detail about creating a test case before the fix to help prevent the issue from being reintroduced. Make sure to include that aspect to provide a more complete understanding of regression testing practices."
+        }
+      ],
+      "question_number": 8,
+      "question_id": "Testing-12",
+      "question_text": "In the context of software testing, what is a regression?",
+      "student_response": "regression testing is a type of software testing where previously successful test cases are re-run after code changes to ensure that new changes haven't introduced unintended issues or broken existing functionalities.       this kind of testing helps verifying that the software remains stable and reliable after updates."
+    },
+    {
+      "status": "assessed",
+      "score": 3.0,
+      "max_score": 3.0,
+      "statistics": {
+        "core": {
+          "total": 1,
+          "satisfied": 1,
+          "percentage": 100.0,
+          "weight": 1.0
+        },
+        "details_important": {
+          "total": 0,
+          "satisfied": 0,
+          "percentage": 0,
+          "weight": 0.0
+        },
+        "scoring_system": "100% Core (no Important details)"
+      },
+      "breakdown": "Core: 1/1 (100% -> 100%) = 100% of 3.0 = 3.0 [100% Core (no Important details)]",
+      "feature_assessments": [
+        {
+          "feature": "The commit type for adding a new public method to a Python project class or module should be 'feat'.",
+          "feature_type": "CORE",
+          "satisfied": true,
+          "motivation": "You correctly identified that the commit type for adding a new public method should be 'feat', demonstrating an understanding of the fundamental concept. Additionally, you explained why 'feat' is appropriate, which enhances your answer. Well done!"
+        }
+      ],
+      "question_number": 9,
+      "question_id": "Versioning-27",
+      "question_text": "Suppose that, in your Python project, you add one more public method to a class or module. You commit the changes using conventional commit. What type would you use for the commit?",
+      "student_response": "if you add a new public method to a class or module in your python project, and you are using conventional commits, the correct type to use it 'feat'.      the 'feat' type stands for feature and is used when you add a new functionality to your project that is backward-compatible."
+    }
+  ],
+  "original_grades": {
+    "total_grade": 17.5,
+    "question_grades": {
+      "1": 2.0,
+      "2": 2.0,
+      "3": 2.5,
+      "4": 1.0,
+      "5": 3.0,
+      "6": 1.5,
+      "7": 2.0,
+      "8": 1.0,
+      "9": 2.5
+    }
+  }
+}

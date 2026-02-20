@@ -1,0 +1,189 @@
+STUDENT ASSESSMENT SUMMARY
+======================================================================
+
+Student: f05177a871d2cba4d711324c60e1c50cd197577f882800af01d66dd48502a9b9c971369b9e18dd32bbcc2b8431e9658af2e9ad1edfdb2c51bd7e15008ec9a29a
+Calculated Score: 11.70/27.0
+Calculated Percentage: 43.3%
+Original Moodle Grade: 10.50/27.00
+Scoring System: 70% Core + 30% Important_Details
+
+======================================================================
+
+Question 1: Definition-33
+----------------------------------------------------------------------
+Calculated Score: 2.10/3.0
+Original Grade: 1.00/3.0
+Difference: +1.10
+Breakdown: Core: 2/2 (100% -> 70%) + Important: 0/2 (0% -> 0%) = 70% of 3.0 = 2.1 [70% Core + 30% Important]
+
+CORE Elements:
+  [OK] Compiled programming languages are translated into machine code via a compiler before execution.
+       You demonstrated an understanding of the core concept by explaining that compiled programming languages are translated into an executable form via a compiler before execution. Good job in capturing the main idea with examples as well!
+
+  [OK] Interpreted programming languages are executed directly by an interpreter without a separate compilation step.
+       You successfully demonstrated an understanding of the fundamental concept by explaining that interpreted languages are read and executed by an interpreter without a separate compilation step. Good job on identifying examples for both compiled and interpreted languages as well.
+
+Important Details:
+  [MISSING] Compiled languages generally result in faster execution as the machine code is optimized for the target CPU.
+       You explained the distinction between compiled and interpreted languages well by mentioning the translation and execution processes. However, you missed the important detail that compiled languages generally result in faster execution because the machine code is optimized for the target CPU. Make sure to include this specific point next time.
+
+  [MISSING] Interpreted languages can lead to slower execution, but the write-test-debug cycle can be faster.
+       While you explained the basic difference between compiled and interpreted languages, you missed the important detail about the impact on execution speed and the write-test-debug cycle. Remember, interpreted languages can lead to slower execution but allow for a faster development cycle, making debugging and testing more efficient. Including this aspect would provide a more complete answer.
+
+
+======================================================================
+
+Question 2: Modelling-2
+----------------------------------------------------------------------
+Calculated Score: 1.05/3.0
+Original Grade: 1.00/3.0
+Difference: +0.05
+Breakdown: Core: 1/2 (50% -> 35%) + Important: 0/2 (0% -> 0%) = 35% of 3.0 = 1.05 [70% Core + 30% Important]
+
+CORE Elements:
+  [OK] Software systems are modelled using the Unified Modelling Language (UML)
+       You demonstrated a clear understanding of the fundamental concept by correctly identifying UML as a method for modeling software systems. Well done on capturing this core aspect in your answer.
+
+  [MISSING] Models involve abstract and visual ways to represent software systems beyond source code
+       While you mention UML and describe software as a model of the world, the answer focuses more on source code as a model and doesn't clearly address the aspect of abstract and visual ways to represent software systems beyond source code. Try to emphasize models as abstract and sometimes visual representations rather than just formal descriptions via code.
+
+Important Details:
+  [MISSING] The model includes classes or functions representing relevant concepts and their relationships
+       You mentioned UML and the concept of modelling, which is a good start. However, you didn't explicitly mention classes or functions representing relevant concepts and their relationships, which was an important detail requested in the perfect answer.
+
+  [MISSING] Non-functional aspects such as UI, persistence, communication, and security are considered in the model
+       Your answer introduces UML as a tool for modelling software, which is great. However, you need to mention how non-functional aspects like UI, persistence, communication, and security are considered in software models. Including these details would provide a more comprehensive answer.
+
+
+======================================================================
+
+Question 3: DistributedSystems-30
+----------------------------------------------------------------------
+Calculated Score: 0.00/3.0
+Original Grade: 1.00/3.0
+Difference: -1.00
+Breakdown: Core: 0/2 (0% -> 0%) + Important: 0/2 (0% -> 0%) = 0% of 3.0 = 0.0 [70% Core + 30% Important]
+
+CORE Elements:
+  [MISSING] The broker mediates communication by receiving messages from producers and forwarding them to consumers.
+       Your answer mentions the FIFO nature of a queue, but it lacks the explanation of the broker's role in mediating communication by receiving messages from producers and forwarding them to consumers. To satisfy the core requirement, you need to highlight the broker's function within a distributed system.
+
+  [MISSING] The broker uses queues to store messages in a FIFO (First In, First Out) manner, ensuring messages are not lost if consumers are unavailable.
+       You identified that a queue stores messages in a FIFO manner, which is important, but you missed explaining how the broker ensures messages are not lost if consumers are unavailable. This part is crucial to demonstrate your understanding of the broker's role in message handling in distributed systems.
+
+Important Details:
+  [MISSING] The broker can enable decoupling of consumers and producers, allowing for asynchronous communication.
+       You provided an accurate description of a queue as a FIFO data structure, which is useful. However, you did not mention how a broker uses this to enable decoupling between consumers and producers in distributed systems. Focus on how the broker facilitates asynchronous communication by managing interactions between independent components.
+
+  [MISSING] Messages stored in a queue by the broker can be consumed by multiple consumers, potentially allowing for load balancing and improved system scalability.
+       You did a great job defining what a queue is, but you didn't address how a broker could exploit a queue for load balancing and improved system scalability by allowing multiple consumers to process the messages. Try to mention this important aspect in your answer.
+
+
+======================================================================
+
+Question 4: GHA-1
+----------------------------------------------------------------------
+Calculated Score: 0.00/3.0
+Original Grade: 0.50/3.0
+Difference: -0.50
+Breakdown: Core: 0/2 (0% -> 0%) + Important: 0/2 (0% -> 0%) = 0% of 3.0 = 0.0 [70% Core + 30% Important]
+
+CORE Elements:
+  [MISSING] GitHub Actions is a CI/CD (Continuous Integration/Continuous Deployment) tool integrated into GitHub that automates repetitive tasks.
+       You mentioned automation in software development, which is a component of GitHub Actions. However, you missed identifying it as a CI/CD tool, which is crucial to understanding its primary purpose. Incorporate understanding of its role in continuous integration and deployment to fully capture the core concept.
+
+  [MISSING] Workflows are configured using YAML files located in the .github/workflows/ folder on the default branch of the repository.
+       Your answer captures the general purpose of GitHub Actions, which is to automate tasks within a software development workflow. However, it lacks the specific detail about how workflows are defined using YAML files in the .github/workflows/ directory on the default branch of the repository. Including this information would demonstrate a deeper understanding of GitHub Actions' configuration process.
+
+Important Details:
+  [MISSING] Workflows are composed of jobs, which are sequential lists of steps that run in parallel unless specified otherwise.
+       Your answer mentions automation in software development with GitHub, which is accurate, but it misses a specific aspect of GitHub Actions: the composition of workflows into jobs and steps. In particular, you need to mention that workflows are composed of jobs that consist of steps, which run sequentially, and that these jobs run in parallel unless specified otherwise.
+
+  [MISSING] Runners are virtual machines executing the jobs, which can be GitHub-hosted or self-hosted.
+       You accurately identified GitHub Actions as a feature for automating tasks, but you missed mentioning runners, which are a key detail. Runners are virtual machines that execute these automated jobs, and noting their role would show a fuller understanding of how GitHub Actions operates.
+
+
+======================================================================
+
+Question 5: Git-24
+----------------------------------------------------------------------
+Calculated Score: 3.00/3.0
+Original Grade: 2.50/3.0
+Difference: +0.50
+Breakdown: Core: 2/2 (100% -> 100%) = 100% of 3.0 = 3.0 [100% Core (no Important details)]
+
+CORE Elements:
+  [OK] git clone
+       You correctly identified the 'git clone' command as the method to clone a GitHub repository and explained its purpose, which shows your understanding of this fundamental concept. Good job!
+
+  [OK] https://github.com/YOUR_GITHUB_USERNAME/testable-calculator
+       You demonstrated a clear understanding of the core concept by explaining the use of the 'git clone' command to create a local copy of the repository. This shows that you grasp the fundamental idea well.
+
+
+======================================================================
+
+Question 6: Lincense-3
+----------------------------------------------------------------------
+Calculated Score: 0.00/3.0
+Original Grade: 1.50/3.0
+Difference: -1.50
+Breakdown: Core: 0/1 (0% -> 0%) + Important: 0/2 (0% -> 0%) = 0% of 3.0 = 0.0 [70% Core + 30% Important]
+
+CORE Elements:
+  [MISSING] Copyleft is a practice, not a legal right, where the creator surrenders some, but not all, rights under copyright law.
+       While you correctly describe a condition of copyleft about derivative works, the core idea that copyleft is a practice where the creator surrenders some, but not all, rights under copyright law is missing. Make sure to highlight that copyleft involves the creator intentionally allowing others to use their work with certain conditions retained.
+
+Important Details:
+  [MISSING] Copyleft licenses can be strong or weak, affecting whether derived works inherit the copyleft license.
+       Your answer correctly captures the essence of copyleft by mentioning the requirement that derivative works must be released under the same license. However, it does not explicitly address the important detail about the distinction between strong or weak copyleft and how this affects whether derived works inherit the copyleft license. Make sure to include this aspect to fully meet the requirement.
+
+  [MISSING] Can be full or partial, indicating whether all or some parts are covered by the copyleft license.
+       You've explained the core concept of copyleft regarding derivative works being released under the same license. However, you missed mentioning the detail about copyleft being full or partial, indicating whether all or some parts are covered by the copyleft license.
+
+
+======================================================================
+
+Question 7: Python-15
+----------------------------------------------------------------------
+Calculated Score: 3.00/3.0
+Original Grade: 1.50/3.0
+Difference: +1.50
+Breakdown: Core: 1/1 (100% -> 70%) + Important: 1/1 (100% -> 30%) = 100% of 3.0 = 3.0 [70% Core + 30% Important]
+
+CORE Elements:
+  [OK] Class attributes are marked as private by prefixing their names with double underscores (__) and not ending with double underscores.
+       You successfully demonstrated your understanding by explaining that prefixing a class attribute's name with double underscores makes it private through name mangling. Well done!
+
+Important Details:
+  [OK] Private attributes are not accessible from outside the class or even from derived classes.
+       You correctly identified that prefixing an attribute with double underscores makes it private through name mangling. This demonstrates your understanding of how to make a class attribute private and restrict its access from outside the class.
+
+
+======================================================================
+
+Question 8: Testing-12
+----------------------------------------------------------------------
+Calculated Score: 2.55/3.0
+Original Grade: 1.50/3.0
+Difference: +1.05
+Breakdown: Core: 1/1 (100% -> 70%) + Important: 1/2 (50% -> 15%) = 85% of 3.0 = 2.55 [70% Core + 30% Important]
+
+CORE Elements:
+  [OK] Regression in software testing is a situation where a feature that was previously working is now compromised after a change.
+       You clearly understand the fundamental concept that regression in software testing involves a previously working feature becoming compromised after a change. Well done on capturing the core idea.
+
+Important Details:
+  [OK] A regression can occur when a new fix breaks another feature.
+       You successfully identified the concept of regression, indicating that a previously working feature can be compromised or broken. This aligns well with understanding that a new change, like a fix, can introduce such an issue.
+
+  [MISSING] Creating a test case before the fix can help prevent the issue from being reintroduced.
+       You described a regression as a feature that was working and is now compromised, which is correct in context. However, you did not mention the important detail about creating a test case before the fix to prevent the issue from being reintroduced. Including this concept would enhance your understanding and explanation of effective regression management.
+
+
+======================================================================
+
+Question 9: Versioning-27
+----------------------------------------------------------------------
+Status: no_response
+
+======================================================================

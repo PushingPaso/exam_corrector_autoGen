@@ -1,0 +1,197 @@
+STUDENT ASSESSMENT SUMMARY
+======================================================================
+
+Student: f237d7945ceb815ef9a66553e0f3d5e230af9b6bd5de6a7ae19a77d09a3fde3907fe5669b55466b4ae73d52a6c98b78371914bd70b8aebf3f18f0bbc010dba90
+Calculated Score: 19.20/27.0
+Calculated Percentage: 71.1%
+Original Moodle Grade: 13.00/27.00
+Scoring System: 70% Core + 30% Important_Details
+
+======================================================================
+
+Question 1: Definition-33
+----------------------------------------------------------------------
+Calculated Score: 3.00/3.0
+Original Grade: 2.00/3.0
+Difference: +1.00
+Breakdown: Core: 2/2 (100% -> 70%) + Important: 2/2 (100% -> 30%) = 100% of 3.0 = 3.0 [70% Core + 30% Important]
+
+CORE Elements:
+  [OK] Compiled programming languages are translated into machine code via a compiler before execution.
+       You have successfully demonstrated an understanding of the core concept that compiled programming languages are translated into machine code via a compiler before execution. Your explanation covers the necessary aspects, even using different wording, highlighting the transformation into machine code before the execution phase, which captures the essence of what compilers do. Well done on illustrating this fundamental distinction.
+
+  [OK] Interpreted programming languages are executed directly by an interpreter without a separate compilation step.
+       You demonstrated an understanding of the core concept by noting that interpreted languages are executed line by line using an interpreter at runtime. This shows you grasp the essential difference between compiled and interpreted programming languages. Well done on capturing the main idea!
+
+Important Details:
+  [OK] Compiled languages generally result in faster execution as the machine code is optimized for the target CPU.
+       You successfully identified that compiled languages result in faster execution because they translate into machine code, which is optimized for the target system, thus making it 'more fast in term of running.' This shows a clear understanding of the important detail associated with compiled languages.
+
+  [OK] Interpreted languages can lead to slower execution, but the write-test-debug cycle can be faster.
+       Your answer effectively captures the main idea that interpreted languages are often slower in execution because they are processed at runtime, but they offer advantages in debugging and testing by allowing immediate feedback from recently written code. This addresses the important detail about the faster write-test-debug cycle in interpreted languages. Well done!
+
+
+======================================================================
+
+Question 2: Modelling-2
+----------------------------------------------------------------------
+Calculated Score: 1.50/3.0
+Original Grade: 2.50/3.0
+Difference: -1.00
+Breakdown: Core: 1/2 (50% -> 35%) + Important: 1/2 (50% -> 15%) = 50% of 3.0 = 1.5 [70% Core + 30% Important]
+
+CORE Elements:
+  [MISSING] Software systems are modelled using the Unified Modelling Language (UML)
+       Your answer gives a good overview of how software can be modelled using structural and behavior models. However, you missed mentioning the Unified Modelling Language (UML), which is a standard way to model software systems. Including UML would demonstrate your understanding of this fundamental concept in software modeling.
+
+  [OK] Models involve abstract and visual ways to represent software systems beyond source code
+       You demonstrated a clear understanding of the fundamental concept by explaining that software can be modelled through abstract representations. Your answer effectively highlights the use of visual models to represent the structure, behavior, and interactions of software systems, which aligns with the core requirement of moving beyond source code. Well done!
+
+Important Details:
+  [OK] The model includes classes or functions representing relevant concepts and their relationships
+       You have successfully mentioned that software modeling includes structural models, such as class diagrams, which represent relevant concepts and their relationships. This demonstrates an understanding of the important detail required. Well done!
+
+  [MISSING] Non-functional aspects such as UI, persistence, communication, and security are considered in the model
+       Your answer does a good job explaining structural and behavior models, which is essential for understanding software modeling. However, it lacks reference to non-functional aspects like UI, persistence, communication, and security, which are crucial for a complete model. Try to incorporate these elements to enhance your answer.
+
+
+======================================================================
+
+Question 3: DistributedSystems-30
+----------------------------------------------------------------------
+Calculated Score: 0.00/3.0
+Original Grade: 0.50/3.0
+Difference: -0.50
+Breakdown: Core: 0/2 (0% -> 0%) + Important: 0/2 (0% -> 0%) = 0% of 3.0 = 0.0 [70% Core + 30% Important]
+
+CORE Elements:
+  [MISSING] The broker mediates communication by receiving messages from producers and forwarding them to consumers.
+       Your answer discusses potential security exploits in distributed systems, which is insightful. However, it doesn't address the core concept of the broker's role in mediating communication by receiving messages from producers and forwarding them to consumers. Try to include this fundamental aspect for a more complete understanding.
+
+  [MISSING] The broker uses queues to store messages in a FIFO (First In, First Out) manner, ensuring messages are not lost if consumers are unavailable.
+       Your answer focuses on security vulnerabilities within the context of brokers and queues, which is important but does not address the core concept of how brokers use queues to ensure message delivery. You need to explain how a broker uses queues to store messages in a FIFO manner to prevent message loss when consumers are unavailable.
+
+Important Details:
+  [MISSING] The broker can enable decoupling of consumers and producers, allowing for asynchronous communication.
+       Your answer focuses on the security vulnerabilities a broker might exploit, but it doesn't address the key detail of how a broker enables decoupling of consumers and producers for asynchronous communication. Make sure to mention the decoupling aspect to satisfy this important detail.
+
+  [MISSING] Messages stored in a queue by the broker can be consumed by multiple consumers, potentially allowing for load balancing and improved system scalability.
+       Your answer provides a good understanding of various security threats related to queues in distributed systems. However, it does not address how a broker can use a queue to allow messages to be consumed by multiple consumers for load balancing and improved system scalability. Make sure to mention the role of brokers in distributing workload among consumers to enhance scalability.
+
+
+======================================================================
+
+Question 4: GHA-1
+----------------------------------------------------------------------
+Calculated Score: 2.10/3.0
+Original Grade: 1.50/3.0
+Difference: +0.60
+Breakdown: Core: 2/2 (100% -> 70%) + Important: 0/2 (0% -> 0%) = 70% of 3.0 = 2.1 [70% Core + 30% Important]
+
+CORE Elements:
+  [OK] GitHub Actions is a CI/CD (Continuous Integration/Continuous Deployment) tool integrated into GitHub that automates repetitive tasks.
+       You demonstrated a clear understanding by identifying GitHub Actions as a CI/CD tool used for automating software workflows directly in a repository. The explanation captures the core concept despite minor wording errors.
+
+  [OK] Workflows are configured using YAML files located in the .github/workflows/ folder on the default branch of the repository.
+       You demonstrated a good understanding of GitHub Actions by mentioning that workflows are defined in YAML files. This shows you grasp the fundamental concept, even though the specific location within the .github/workflows/ folder wasn't detailed.
+
+Important Details:
+  [MISSING] Workflows are composed of jobs, which are sequential lists of steps that run in parallel unless specified otherwise.
+       Your answer provides a good overview of GitHub Actions as a CI/CD tool and mentions YAML files for defining workflows. However, it lacks the important detail about workflows being composed of jobs, which are sequences of steps that can run in parallel. Including this information would enhance your understanding of how workflows are structured in GitHub Actions.
+
+  [MISSING] Runners are virtual machines executing the jobs, which can be GitHub-hosted or self-hosted.
+       Your answer effectively explains GitHub Actions as a CI/CD tool that automates software workflows. However, it lacks mention of the important detail regarding 'runners' being virtual machines which can be either GitHub-hosted or self-hosted. Including this detail in your answer would complete your explanation.
+
+
+======================================================================
+
+Question 5: Git-24
+----------------------------------------------------------------------
+Calculated Score: 1.50/3.0
+Original Grade: 0.50/3.0
+Difference: +1.00
+Breakdown: Core: 1/2 (50% -> 50%) = 50% of 3.0 = 1.5 [100% Core (no Important details)]
+
+CORE Elements:
+  [OK] git clone
+       You demonstrated an understanding of the core concept by mentioning the 'git clone' command as a way to clone a repository. You also acknowledged different methods and provided additional commands that could be used after cloning, showing a good grasp of basic git operations.
+
+  [MISSING] https://github.com/YOUR_GITHUB_USERNAME/testable-calculator
+       You correctly mentioned the use of 'git clone' to copy a repository using a direct link, demonstrating basic understanding. However, you did not provide the specific example of cloning the URL 'https://github.com/YOUR_GITHUB_USERNAME/testable-calculator' as requested. Including this specific core element shows your understanding of applying general concepts to a specific scenario.
+
+
+======================================================================
+
+Question 6: Lincense-3
+----------------------------------------------------------------------
+Calculated Score: 2.55/3.0
+Original Grade: 1.50/3.0
+Difference: +1.05
+Breakdown: Core: 1/1 (100% -> 70%) + Important: 1/2 (50% -> 15%) = 85% of 3.0 = 2.55 [70% Core + 30% Important]
+
+CORE Elements:
+  [OK] Copyleft is a practice, not a legal right, where the creator surrenders some, but not all, rights under copyright law.
+       You demonstrated a clear understanding of the core concept of copyleft by explaining how it allows modification and redistribution under the same license, effectively ensuring freedom while maintaining certain rights. Well done!
+
+Important Details:
+  [OK] Copyleft licenses can be strong or weak, affecting whether derived works inherit the copyleft license.
+       You effectively captured the essence of copyleft by explaining its requirement to distribute derivative works under the same license. This demonstrates a clear understanding of the concept that copyleft licenses can affect derived works. Good job on highlighting the importance of maintaining the software's openness.
+
+  [MISSING] Can be full or partial, indicating whether all or some parts are covered by the copyleft license.
+       You did a great job explaining the concept of copyleft and how it operates in the realm of open-source software. However, you missed mentioning the important detail about whether copyleft can be full or partial, indicating that all or some parts are covered by the copyleft license. Including this aspect would provide a more complete understanding of the concept.
+
+
+======================================================================
+
+Question 7: Python-15
+----------------------------------------------------------------------
+Calculated Score: 3.00/3.0
+Original Grade: 1.00/3.0
+Difference: +2.00
+Breakdown: Core: 1/1 (100% -> 70%) + Important: 1/1 (100% -> 30%) = 100% of 3.0 = 3.0 [70% Core + 30% Important]
+
+CORE Elements:
+  [OK] Class attributes are marked as private by prefixing their names with double underscores (__) and not ending with double underscores.
+       You correctly explained that class attributes can be marked as private by prefixing their names with double underscores, demonstrating understanding of the fundamental concept. Well done!
+
+Important Details:
+  [OK] Private attributes are not accessible from outside the class or even from derived classes.
+       You correctly identified that prefixing a class attribute with two underscores makes it private. This demonstrates an understanding that such attributes are not intended to be accessed directly from outside the class, even in derived classes. Good job!
+
+
+======================================================================
+
+Question 8: Testing-12
+----------------------------------------------------------------------
+Calculated Score: 2.55/3.0
+Original Grade: 1.50/3.0
+Difference: +1.05
+Breakdown: Core: 1/1 (100% -> 70%) + Important: 1/2 (50% -> 15%) = 85% of 3.0 = 2.55 [70% Core + 30% Important]
+
+CORE Elements:
+  [OK] Regression in software testing is a situation where a feature that was previously working is now compromised after a change.
+       You demonstrated a clear understanding of regression in software testing by explaining that a feature previously working stops functioning correctly after changes. This shows you grasp the concept that changes can lead to bugs in existing features.
+
+Important Details:
+  [OK] A regression can occur when a new fix breaks another feature.
+       You successfully mentioned the critical concept that a regression can occur after changes like bug fixes or updates, potentially leading to previously working features failing. Well done in capturing this important detail.
+
+  [MISSING] Creating a test case before the fix can help prevent the issue from being reintroduced.
+       You have accurately explained the core concept of what a regression is in software testing. However, the important detail about creating a test case before the fix to prevent the issue from being reintroduced is missing. Consider including this aspect in your answer to demonstrate a more comprehensive understanding of regression management.
+
+
+======================================================================
+
+Question 9: Versioning-27
+----------------------------------------------------------------------
+Calculated Score: 3.00/3.0
+Original Grade: 2.00/3.0
+Difference: +1.00
+Breakdown: Core: 1/1 (100% -> 100%) = 100% of 3.0 = 3.0 [100% Core (no Important details)]
+
+CORE Elements:
+  [OK] The commit type for adding a new public method to a Python project class or module should be 'feat'.
+       You clearly demonstrated an understanding of the core concept by identifying the addition of a public method as a new feature, and correctly identifying 'feat' as the appropriate commit type. Well done on capturing the key idea!
+
+
+======================================================================
