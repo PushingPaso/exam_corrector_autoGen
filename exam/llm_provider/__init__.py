@@ -42,6 +42,7 @@ def get_llm(model_name: str = None, output_format=None):
         model=model_name,
         #base_url=base_url,
         api_key=api_key,
+        temprature= 0.0,
         model_info={
             "vision": False,
             "function_calling": True,
